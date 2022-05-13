@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "test": "jest",
-    "dev:watch": "webpack --config webpack.development.config.js"
+    "dev:watch": "webpack --config webpack.development.config.js --watch",
+    "dev": "webpack --config webpack.development.config.js"
   },
   "repository": {
     "type": "git",
