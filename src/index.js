@@ -1,7 +1,3 @@
-function component() {
-    const element = document.createElement('div');
-    element.innerHTML = "Hello world";
-    return element;
-}
+import createComponent from "./createComponent";
 
-document.body.appendChild(component());
+document.body.appendChild(createComponent());
