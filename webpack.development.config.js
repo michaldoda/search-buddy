@@ -8,8 +8,10 @@ module.exports = {
         path: path.resolve(__dirname, 'dev'),
     },
     devServer: {
+        static: {
+            directory: path.join(__dirname, 'dev'),
+        },
+        compress: true,
         port: 3000,
-        watchContentBase: false,
-        stats: "errors-only",
     },
 };
