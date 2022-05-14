@@ -1,3 +1,7 @@
+let state = [];
+let isOpen = false;
+let threshold = 1000;
+
 export default () => {
     const style = `
         #x-wrapper:focus-within {
@@ -30,9 +34,25 @@ export default () => {
     let styleElement = document.createElement("style");
     styleElement.innerText = style;
     document.head.appendChild(styleElement);
+
+    const container = document.createElement("div");
+    container.style.display = "none";
+    container.style.position = "fixed";
+    container.style.backgroundColor = "rgba(233,233,233,0.9)";
+    container.style.width = "100%";
+    container.style.height = "100%";
+    container.style.top = "0";
+    container.style.left = "0";
+
     const form = document.createElement("form");
+    form.style.width = "60%";
+    form.style.position = "relative";
+    form.style.margin = "4rem auto";
     form.style.display = "flex";
     form.style.boxSizing = "border-box";
+
+    container.appendChild(form);
+
 
     const wrapper = document.createElement("div");
     wrapper.style.alignItems = "center";
@@ -64,6 +84,7 @@ export default () => {
     searchButtonElement.style.background = "none";
     searchButtonElement.type = "submit";
     searchButtonElement.style.height = "100%";
+    searchButtonElement.style.width = "44px";
     searchButtonElement.innerHTML = "&#128269;";
 
     const inputElement = document.createElement("input");
@@ -91,6 +112,8 @@ export default () => {
     clearButtonElement.style.background = "none";
     clearButtonElement.style.height = "100%";
     clearButtonElement.type = "reset";
+    clearButtonElement.style.cursor = "pointer";
+    clearButtonElement.style.width = "44px";
 
 
 
@@ -110,5 +133,46 @@ export default () => {
         form.querySelector("input").focus();
     });
 
-    return form;
+    const handleMouseDown = (e) => {
+        if (isOpen === true) {
+            isOpen = false;
+            container.style.display = "none";
+        }
+        console.log('');
+    }
+    const handleKeyDown = (e) => {
+        if (e.code === "ShiftLeft") {
+            state.push({
+                time: Date.now()
+            });
+        } else if (e.code === "Escape") {
+            isOpen = false;
+            document.body.style.overflow = "auto"; // ADD THIS LINE
+            document.body.style.height = "100%"; // ADD THIS LINE
+            container.style.display = "none";
+        }
+
+        if (state.length === 2) {
+            state.map((el) => {
+                if (state[1].time - state[0].time < threshold) {
+                    // todo
+                    isOpen = true;
+                    document.body.style.overflow = "hidden"; // ADD THIS LINE
+                    document.body.style.height = "100%"; // ADD THIS LINE
+                    console.log('works');
+                    container.style.display = "inline-block";
+                    container.querySelector('input').focus();
+                } else {
+                    // todo
+                    console.log('tooslow');
+                }
+            });
+            state = [];
+        }
+    };
+
+    document.addEventListener('keydown',handleKeyDown);
+    document.addEventListener('click', handleMouseDown);
+
+    return container;
 }
