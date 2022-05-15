@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/michaldoda/search-prototype#readme",
   "devDependencies": {
+    "css-loader": "^6.7.1",
     "jest": "^28.1.0",
+    "style-loader": "^3.3.1",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.9.0"
