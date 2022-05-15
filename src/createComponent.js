@@ -75,7 +75,7 @@ export default () => {
     };
 
     document.addEventListener('keydown',handleKeyDown);
-    document.addEventListener('click', handleMouseDown);
+    document.addEventListener('mousedown', handleMouseDown);
 
     return container;
 }
