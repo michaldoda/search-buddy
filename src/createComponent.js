@@ -47,7 +47,7 @@ export default () => {
     }
     const handleKeyDown = (e) => {
         console.log(state);
-        if (e.code === "ShiftLeft") {
+        if (e.code === "ShiftLeft" && isOpen === false) {
             state.push({
                 time: Date.now()
             });
