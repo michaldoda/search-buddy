@@ -40,7 +40,7 @@ export default () => {
     });
 
     const handleMouseDown = (e) => {
-        if (isOpen === true) {
+        if (isOpen === true && e.target === container) { //todo review if needed
             isOpen = false;
             container.style.display = "none";
         }
