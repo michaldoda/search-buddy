@@ -3,129 +3,35 @@ let isOpen = false;
 let threshold = 1000;
 
 export default () => {
-    const style = `
-        #x-wrapper:focus-within {
-            /*border: solid 2px #3e34d3;*/
-            border: solid 1px rgba(62, 52, 211, 0.8) !important;
-            box-shadow: 0 0 2px 2px rgb(62 52 211 / 20%), inset 0 0 0 2px rgb(62 52 211 / 20%);
-            outline: medium none currentColor;
-        }
-        input:focus {
-        padding: 0; }
-        #x:focus-visible {
-            border: none;
-            outline: none;
-        }
-        #x::placeholder {
-            color: rgba(128,126,163,.8);
-        }
-        #x{
-            color: rgb(17, 11, 50);
-        }
-        svg {
-            color: #3e34d3;
-        height: auto;
-        max-height: 20px;
-        stroke-width: 1.6;
-        width: 20px;
-
-        }
-    `;
-    let styleElement = document.createElement("style");
-    styleElement.innerText = style;
-    document.head.appendChild(styleElement);
-
     const container = document.createElement("div");
-    container.style.display = "none";
-    container.style.position = "fixed";
-    container.style.backgroundColor = "rgba(233,233,233,0.9)";
-    container.style.width = "100%";
-    container.style.height = "100%";
-    container.style.top = "0";
-    container.style.left = "0";
+    container.setAttribute("id", "container");
 
     const form = document.createElement("form");
-    form.style.width = "60%";
-    form.style.position = "relative";
-    form.style.margin = "4rem auto";
-    form.style.display = "flex";
-    form.style.boxSizing = "border-box";
-
+    form.setAttribute("id", "form");
     container.appendChild(form);
 
 
     const wrapper = document.createElement("div");
-    wrapper.style.alignItems = "center";
-    wrapper.style.display = "flex";
-    wrapper.style.overflow = "hidden";
-    wrapper.style.backgroundColor = "#fff";
-    wrapper.style.flexShrink = "0";
-    wrapper.style.border = "solid 1px rgba(128,126,163,.8)"
-    wrapper.style.height = "44px";
-    wrapper.style.borderRadius = "3px";
-    wrapper.style.order = "1";
-    wrapper.style.width = "100%";
-
-
-
-
-
-
-
+    wrapper.setAttribute("id", "wrapper");
     form.appendChild(wrapper);
-    wrapper.style.display = "flex";
-    wrapper.setAttribute("id", "x-wrapper");
 
 
     const searchButtonElement = document.createElement("button");
+    searchButtonElement.setAttribute("id", "search-button");
     searchButtonElement.innerHTML = "&#128269;";
-    searchButtonElement.style.order = "1";
-    searchButtonElement.style.border = "0";
-    searchButtonElement.style.background = "none";
     searchButtonElement.type = "submit";
-    searchButtonElement.style.height = "100%";
-    searchButtonElement.style.width = "44px";
-    searchButtonElement.innerHTML = "&#128269;";
+    wrapper.appendChild(searchButtonElement)
 
     const inputElement = document.createElement("input");
+    inputElement.setAttribute("id", "input");
     inputElement.type = "text";
-    inputElement.setAttribute("id", "x");
     inputElement.placeholder = "Start typing";
-    inputElement.style.order = "2";
-    inputElement.style.fontSize = "1.3rem";
-    inputElement.style.padding = "0";
-    inputElement.style.fontWeight = "400";
-    inputElement.style.border = "0";
-    inputElement.style.height = "40px";
-    inputElement.style.lineHeight = "40px";
-    inputElement.style.outline = "none";
-    inputElement.style.width = "100%";
-
-
-
-
+    wrapper.appendChild(inputElement)
 
     const clearButtonElement = document.createElement("button");
+    clearButtonElement.setAttribute("id", "clear-button");
     clearButtonElement.innerHTML = "&#10005;";
-    clearButtonElement.style.order = "3";
-    clearButtonElement.style.border = "0";
-    clearButtonElement.style.background = "none";
-    clearButtonElement.style.height = "100%";
     clearButtonElement.type = "reset";
-    clearButtonElement.style.cursor = "pointer";
-    clearButtonElement.style.width = "44px";
-
-
-
-
-
-
-
-
-
-
-    wrapper.appendChild(searchButtonElement)
-    wrapper.appendChild(inputElement)
     wrapper.appendChild(clearButtonElement)
 
     form.addEventListener('submit', (e) => {
@@ -138,36 +44,33 @@ export default () => {
             isOpen = false;
             container.style.display = "none";
         }
-        console.log('');
     }
     const handleKeyDown = (e) => {
+        console.log(state);
         if (e.code === "ShiftLeft") {
             state.push({
                 time: Date.now()
             });
-        } else if (e.code === "Escape") {
-            isOpen = false;
-            document.body.style.overflow = "auto"; // ADD THIS LINE
-            document.body.style.height = "100%"; // ADD THIS LINE
-            container.style.display = "none";
-        }
 
-        if (state.length === 2) {
-            state.map((el) => {
-                if (state[1].time - state[0].time < threshold) {
-                    // todo
+            if (state.length > 1) {
+                if (state[state.length-1].time - state[state.length-2].time < threshold) {
                     isOpen = true;
                     document.body.style.overflow = "hidden"; // ADD THIS LINE
                     document.body.style.height = "100%"; // ADD THIS LINE
-                    console.log('works');
                     container.style.display = "inline-block";
                     container.querySelector('input').focus();
                 } else {
-                    // todo
-                    console.log('tooslow');
+                    state = [];
                 }
-            });
-            state = [];
+            }
+
+        } else if (e.code === "Escape") {
+            if (isOpen === true) {
+                isOpen = false;
+                container.style.display = "none";
+                document.body.style.overflow = "auto";
+                document.body.style.height = "100%";
+            }
         }
     };
 
