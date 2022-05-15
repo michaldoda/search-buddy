@@ -28,6 +28,7 @@ export default () => {
     inputElement.type = "text";
     inputElement.placeholder = "Start typing";
     inputElement.autocomplete = "off";
+    inputElement.spellcheck = false;
     wrapper.appendChild(inputElement)
 
     const clearButtonElement = document.createElement("button");
