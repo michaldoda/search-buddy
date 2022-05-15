@@ -1,6 +1,8 @@
-let state = [];
-let isOpen = false;
-let threshold = 1000;
+let state = {
+    shiftLeftLog: [],
+    isOpen: false,
+    threshold: 1000,
+};
 
 export default () => {
     const container = document.createElement("div");
@@ -9,7 +11,6 @@ export default () => {
     const form = document.createElement("form");
     form.setAttribute("id", "form");
     container.appendChild(form);
-
 
     const wrapper = document.createElement("div");
     wrapper.setAttribute("id", "wrapper");
@@ -26,6 +27,7 @@ export default () => {
     inputElement.setAttribute("id", "input");
     inputElement.type = "text";
     inputElement.placeholder = "Start typing";
+    inputElement.autocomplete = "off";
     wrapper.appendChild(inputElement)
 
     const clearButtonElement = document.createElement("button");
@@ -40,33 +42,33 @@ export default () => {
     });
 
     const handleMouseDown = (e) => {
-        if (isOpen === true && e.target === container) { //todo review if needed
-            isOpen = false;
+        if (state.isOpen === true && e.target === container) { //todo review if needed
+            state.isOpen = false;
             container.style.display = "none";
         }
     }
     const handleKeyDown = (e) => {
-        console.log(state);
-        if (e.code === "ShiftLeft" && isOpen === false) {
-            state.push({
+        if (e.code === "ShiftLeft" && state.isOpen === false) {
+            state.shiftLeftLog.push({
                 time: Date.now()
             });
 
-            if (state.length > 1) {
-                if (state[state.length-1].time - state[state.length-2].time < threshold) {
-                    isOpen = true;
+            if (state.shiftLeftLog.length > 1) {
+                if (state.shiftLeftLog[state.shiftLeftLog.length-1].time - state.shiftLeftLog[state.shiftLeftLog.length-2].time < state.threshold) {
+                    state.isOpen = true;
                     document.body.style.overflow = "hidden"; // ADD THIS LINE
                     document.body.style.height = "100%"; // ADD THIS LINE
                     container.style.display = "inline-block";
                     container.querySelector('input').focus();
+                    state.shiftLeftLog = [];
                 } else {
-                    state = [];
+                    state.shiftLeftLog = [];
                 }
             }
 
         } else if (e.code === "Escape") {
-            if (isOpen === true) {
-                isOpen = false;
+            if (state.isOpen === true) {
+                state.isOpen = false;
                 container.style.display = "none";
                 document.body.style.overflow = "auto";
                 document.body.style.height = "100%";

@@ -45,9 +45,6 @@
 }
 
 #input {
-    color: rgb(17, 11, 50);
-}
-#input:focus {
     padding: 0;
     order: 2;
     font-size: 1.3rem;
@@ -57,7 +54,9 @@
     line-height: 40px;
     outline: none;
     width: 100%;
+    color: rgb(17, 11, 50);
 }
+
 #input:focus-visible {
     border: none;
     outline: none;
@@ -74,12 +73,3 @@
     cursor: pointer;
     width: 44px;
 }
-
-/*svg {*/
-/*    color: #3e34d3;*/
-/*    height: auto;*/
-/*    max-height: 20px;*/
-/*    stroke-width: 1.6;*/
-/*    width: 20px;*/
-
-/*}*/
