@@ -8,20 +8,82 @@ export default () => {
     const container = document.createElement("div");
     container.setAttribute("id", "container");
 
+    const formWrapper = document.createElement("div");
+    formWrapper.setAttribute("id", "formWrapper");
+
     const form = document.createElement("form");
     form.setAttribute("id", "form");
-    container.appendChild(form);
+    formWrapper.append(form);
+    container.appendChild(formWrapper);
+    let hrElement = document.createElement("hr");
+    formWrapper.appendChild(hrElement);
 
-    const wrapper = document.createElement("div");
-    wrapper.setAttribute("id", "wrapper");
-    form.appendChild(wrapper);
+    const result = document.createElement("div");
+    result.setAttribute("id", "result");
+    result.innerHTML = "" +
+        "<div class='items'>" +
+        "<ul>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "<li><a href=''>ok</a></li>" +
+        "</ul>" +
+        "</div>" +
+        "";
+    formWrapper.appendChild(result);
+
+    const fieldsWrapper = document.createElement("div");
+    fieldsWrapper.setAttribute("id", "fieldsWrapper");
+    form.appendChild(fieldsWrapper);
 
 
     const searchButtonElement = document.createElement("button");
     searchButtonElement.setAttribute("id", "search-button");
     searchButtonElement.innerHTML = "&#128269;";
     searchButtonElement.type = "submit";
-    wrapper.appendChild(searchButtonElement)
+    fieldsWrapper.appendChild(searchButtonElement)
 
     const inputElement = document.createElement("input");
     inputElement.setAttribute("id", "input");
@@ -29,13 +91,13 @@ export default () => {
     inputElement.placeholder = "Start typing";
     inputElement.autocomplete = "off";
     inputElement.spellcheck = false;
-    wrapper.appendChild(inputElement)
+    fieldsWrapper.appendChild(inputElement)
 
     const clearButtonElement = document.createElement("button");
     clearButtonElement.setAttribute("id", "clear-button");
     clearButtonElement.innerHTML = "&#10005;";
     clearButtonElement.type = "reset";
-    wrapper.appendChild(clearButtonElement)
+    fieldsWrapper.appendChild(clearButtonElement)
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -77,8 +139,14 @@ export default () => {
         }
     };
 
+    const handleInputChange = (e) => {
+        hrElement.style.display = "block";
+        result.style.display = "block";
+    };
+
     document.addEventListener('keydown',handleKeyDown);
     document.addEventListener('mousedown', handleMouseDown);
+    inputElement.addEventListener('keydown', handleInputChange);
 
     return container;
 }
