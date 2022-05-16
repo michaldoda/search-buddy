@@ -104,10 +104,16 @@ export default () => {
         form.querySelector("input").focus();
     });
 
+    const hideContainer = () => {
+        state.isOpen = false;
+        container.style.display = "none";
+        document.body.style.overflow = "auto";
+        document.body.style.height = "100%";
+    };
+
     const handleMouseDown = (e) => {
         if (state.isOpen === true && e.target === container) { //todo review if needed
-            state.isOpen = false;
-            container.style.display = "none";
+            hideContainer();
         }
     }
     const handleKeyDown = (e) => {
@@ -131,10 +137,7 @@ export default () => {
 
         } else if (e.code === "Escape") {
             if (state.isOpen === true) {
-                state.isOpen = false;
-                container.style.display = "none";
-                document.body.style.overflow = "auto";
-                document.body.style.height = "100%";
+                hideContainer();
             }
         }
     };

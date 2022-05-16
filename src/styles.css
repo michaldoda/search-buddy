@@ -89,7 +89,7 @@
 #result {
     position: relative;
     display: none;
-    height: 500px;
+    height: 600px;
     box-sizing: border-box;
     overflow: auto;
 }
