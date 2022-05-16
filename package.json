@@ -5,7 +5,8 @@
   "scripts": {
     "test": "jest",
     "dev:watch": "webpack serve -c webpack.development.config.js",
-    "dev": "webpack --config webpack.development.config.js"
+    "dev": "webpack --config webpack.development.config.js",
+    "production": "webpack --config webpack.production.config.js"
   },
   "repository": {
     "type": "git",
