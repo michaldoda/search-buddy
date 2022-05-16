@@ -1,4 +1,5 @@
 import filter from './filter';
+import items from "./items";
 import renderResults from './renderResults'
 let state = {
     shiftLeftLog: [],
@@ -7,21 +8,6 @@ let state = {
     query: "",
     results: [],
 };
-
-let items = [
-    {
-        id: 1,
-        name: "Tools / Guid generator",
-    },
-    {
-        id: 2,
-        name: "Articles / Guid generator",
-    },
-    {
-        id: 3,
-        name: "Tools / Contrast ratio calculator",
-    },
-];
 
 export default (options) => {
     const container = document.createElement("div");
