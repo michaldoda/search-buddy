@@ -18,7 +18,7 @@
     box-shadow: 0 8px 22px 0 rgb(37 44 97 / 15%), 0 4px 6px 0 rgb(93 100 148 / 20%);
     background-color: #fff;
     border-radius: 10px; /* check */
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 #form {
@@ -37,7 +37,7 @@
     flex-shrink: 0;
     height: 44px;
     order: 1;
-    width: 100%;
+    width: 96%;
 }
 
 #fieldsWrapper:focus-within {
