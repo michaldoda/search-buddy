@@ -25,27 +25,21 @@ export default (items, query) => {
     let withScore = null;
     if (maxKey && Object.keys(newResults).length > 1) {
         withScore = maxKey;
-        console.log('with', withScore);
     }
 
 
-    return results.filter((el, index) => {
-        if (withScore) {
-            if (el.score === withScore) {
-                return {
-                    name: el.name,
-                    score: el.score,
-                    path: el.path,
-                    type: el.type,
-                }
-            }
-        } else {
-            return {
-                name: el.name,
-                score: el.score,
-                path: el.path,
-                type: el.type,
-            }
+    return results.filter((el) => {
+        let item = {
+            name: el.name,
+            score: el.score,
+            path: el.path,
+            type: el.type,
+        };
+
+        if (!withScore) {
+            return item;
+        } else if (el.score === withScore) {
+            return item;
         }
     })
 }

@@ -1,6 +1,6 @@
 import filter from './filter';
 import items from "./items";
-import renderResults from './renderResults'
+import buildResultElements from './buildResultElements'
 let state = {
     shiftLeftLog: [],
     isOpen: false,
@@ -24,9 +24,9 @@ export default (options) => {
     hrElement.setAttribute("id", "divider");
     formWrapper.appendChild(hrElement);
 
-    const result = document.createElement("div");
-    result.setAttribute("id", "result");
-    formWrapper.appendChild(result);
+    const resultElement = document.createElement("div");
+    resultElement.setAttribute("id", "result");
+    formWrapper.appendChild(resultElement);
 
     const fieldsWrapper = document.createElement("div");
     fieldsWrapper.setAttribute("id", "fieldsWrapper");
@@ -78,8 +78,8 @@ export default (options) => {
 
     const hideResults = () => {
         hrElement.style.display = "none";
-        result.style.display = "none";
-        result.innerHTML = "";
+        resultElement.style.display = "none";
+        resultElement.innerHTML = "";
         toggleClearButton(false);
     };
 
@@ -115,10 +115,9 @@ export default (options) => {
     };
 
     let navigate = (direction) => {
-        state.usingKeyNav = true;
-        let currentItem = result.querySelector("ul li a.selected");
+        let currentItem = resultElement.querySelector("ul li a.selected");
         if (!currentItem) {
-            let firstItem = result.querySelector("ul li a");
+            let firstItem = resultElement.querySelector("ul li a");
             if (firstItem) {
                 firstItem.classList.add("selected");
                 return;
@@ -130,23 +129,18 @@ export default (options) => {
         let index = parseInt(currentItem?.dataset.index);
         index = direction === 'down' ? index + 1 : index - 1;
         if (direction === 'up' && !currentItem.parentElement.previousElementSibling) {
-            console.log('nothing to do');
             return;
         } else if (direction === 'down' && !currentItem.parentElement.nextElementSibling) {
-            console.log('nothing to do');
             return;
         }
 
-        let nextItem = result.querySelector('ul li a[data-index="'+index+'"]');
+        let nextItem = resultElement.querySelector('ul li a[data-index="'+index+'"]');
         if (nextItem) {
             currentItem.classList.remove('selected');
             nextItem.classList.add('selected');
-            nextItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+            nextItem.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'start' });
         }
     };
-    let getCurrentItem = () => {
-        return result.querySelector("ul li a.selected");
-    }
     const handleInputChange = (e) => {
         switch (e.key) {
             case "ArrowDown":
@@ -156,21 +150,21 @@ export default (options) => {
                 navigate('up');
                 return;
             case "Enter":
-                let currentItem = getCurrentItem();
-                if (currentItem) {
-                    window.location = currentItem.href;
+                let href = resultElement.querySelector("ul li a.selected")?.href;
+                if (href) {
+                    window.location = href;
                 }
                 return;
         }
         state.query = e.target.value;
-        result.innerHTML = "";
+        resultElement.innerHTML = "";
         let filteredResults = filter(items, state.query);
         state.results = filteredResults;
-        let resultElements = renderResults(filteredResults);
+        let resultElements = buildResultElements(filteredResults);
         if (filteredResults.length) {
             hrElement.style.display = "block";
-            result.style.display = "block";
-            result.appendChild(resultElements);
+            resultElement.style.display = "block";
+            resultElement.appendChild(resultElements);
         }
         if (filteredResults.length === 0) {
             hideResults();
@@ -187,7 +181,7 @@ export default (options) => {
     };
 
     const handleMouseOver = (e) => {
-        let items = result.querySelectorAll("ul li a")
+        let items = resultElement.querySelectorAll("ul li a")
         for (let i = 0; i < items.length; i++) {
             items[i].classList.remove('selected');
         }
@@ -199,15 +193,12 @@ export default (options) => {
 
 
     document.addEventListener('keydown', handleKeyDown);
-    result.addEventListener('mousemove', handleMouseOver);
+    resultElement.addEventListener('mousemove', handleMouseOver);
     document.addEventListener('mousedown', handleMouseDown);
     closeButtonElement.addEventListener('mousedown', handleCloseClick);
     inputElement.addEventListener('keyup', handleInputChange);
-    // inputElement.addEventListener('change', handleInputChange);
-    // inputElement.addEventListener('keydown', handleInputChange);
 
     form.addEventListener('submit', (e) => {
-        console.log('as');
         e.preventDefault();
         form.querySelector("input").focus();
     });
