@@ -19,14 +19,14 @@
     box-shadow: 0 8px 22px 0 rgb(37 44 97 / 15%), 0 4px 6px 0 rgb(93 100 148 / 20%);
     background-color: #fff;
     border-radius: 10px; /* check */
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 @media screen and (max-width: 800px) {
-    /*todo*/
     #formWrapper {
         margin: 0 !important;
         width: 100% !important;
+        max-height: 100% !important;
         border-radius: 0 !important;
     }
 }
