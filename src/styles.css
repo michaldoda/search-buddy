@@ -17,7 +17,6 @@
     box-sizing: border-box;
     box-shadow: 0 8px 22px 0 rgb(37 44 97 / 15%), 0 4px 6px 0 rgb(93 100 148 / 20%);
     background-color: #fff;
-    padding: 0.4rem;
     border-radius: 24px;
     overflow: hidden;
 }
@@ -27,6 +26,7 @@
     position: relative;
     display: flex;
     height: 44px;
+    padding: 0.5rem;
 }
 
 #fieldsWrapper {
@@ -92,12 +92,13 @@
     background: none;
     height: 100%;
     cursor: pointer;
-    width: 80px;
+    margin-left: 10px;
+    margin-right: 20px;
     color: #bbb;
 }
 
-#formWrapper hr {
-    border: 1px solid green;
+#formWrapper #divider {
+    border-bottom: 1px solid #f4f4f4;
     display: none;
 }
 

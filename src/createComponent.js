@@ -15,7 +15,8 @@ export default () => {
     form.setAttribute("id", "form");
     formWrapper.append(form);
     container.appendChild(formWrapper);
-    let hrElement = document.createElement("hr");
+    let hrElement = document.createElement("div");
+    hrElement.setAttribute("id", "divider");
     formWrapper.appendChild(hrElement);
 
     const result = document.createElement("div");
@@ -157,7 +158,7 @@ export default () => {
         }
     };
 
-    const handleInputChange = (e) => {
+    const handleInputChange = () => {
         hrElement.style.display = "block";
         result.style.display = "block";
         if (inputElement.value !== "") {
@@ -181,7 +182,7 @@ export default () => {
         e.preventDefault();
         form.querySelector("input").focus();
     });
-    form.addEventListener('reset', (e) => {
+    form.addEventListener('reset', () => {
         hideResults();
         inputElement.focus();
     });
