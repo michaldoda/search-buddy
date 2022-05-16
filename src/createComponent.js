@@ -7,7 +7,6 @@ let state = {
     threshold: 1000,
     query: "",
     results: [],
-    // usingKeyNav: false,
 };
 
 export default (options) => {
@@ -116,6 +115,7 @@ export default (options) => {
     };
 
     let navigate = (direction) => {
+        state.usingKeyNav = true;
         let currentItem = result.querySelector("ul li a.selected");
         if (!currentItem) {
             let firstItem = result.querySelector("ul li a");
@@ -187,9 +187,6 @@ export default (options) => {
     };
 
     const handleMouseOver = (e) => {
-        // if (state.usingKeyNav) {
-        //     return;
-        // }
         let items = result.querySelectorAll("ul li a")
         for (let i = 0; i < items.length; i++) {
             items[i].classList.remove('selected');
@@ -202,7 +199,7 @@ export default (options) => {
 
 
     document.addEventListener('keydown', handleKeyDown);
-    result.addEventListener('mouseover', handleMouseOver);
+    result.addEventListener('mousemove', handleMouseOver);
     document.addEventListener('mousedown', handleMouseDown);
     closeButtonElement.addEventListener('mousedown', handleCloseClick);
     inputElement.addEventListener('keyup', handleInputChange);
