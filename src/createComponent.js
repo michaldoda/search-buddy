@@ -1,10 +1,29 @@
+import filter from './filter';
+import renderResults from './renderResults'
 let state = {
     shiftLeftLog: [],
     isOpen: false,
     threshold: 1000,
+    query: "",
+    results: [],
 };
 
-export default () => {
+let items = [
+    {
+        id: 1,
+        name: "Tools / Guid generator",
+    },
+    {
+        id: 2,
+        name: "Articles / Guid generator",
+    },
+    {
+        id: 3,
+        name: "Tools / Contrast ratio calculator",
+    },
+];
+
+export default (options) => {
     const container = document.createElement("div");
     container.setAttribute("id", "container");
 
@@ -21,56 +40,6 @@ export default () => {
 
     const result = document.createElement("div");
     result.setAttribute("id", "result");
-    result.innerHTML = "" +
-        "<ul>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "<li><a href=''>ok</a></li>" +
-        "</ul>" +
-        "";
     formWrapper.appendChild(result);
 
     const fieldsWrapper = document.createElement("div");
@@ -124,6 +93,7 @@ export default () => {
     const hideResults = () => {
         hrElement.style.display = "none";
         result.style.display = "none";
+        result.innerHTML = "";
         toggleClearButton(false);
     };
 
@@ -158,9 +128,50 @@ export default () => {
         }
     };
 
-    const handleInputChange = () => {
-        hrElement.style.display = "block";
-        result.style.display = "block";
+    let navigate = (direction) => {
+        let currentItem = result.querySelector("ul li a.selected");
+        if (!currentItem) return null;
+
+        let index = parseInt(currentItem?.dataset.index);
+        index = direction === 'down' ? index + 1 : index - 1;
+
+        let nextItem = result.querySelector('ul li a[data-index="'+index+'"]');
+        if (nextItem) {
+            currentItem.classList.remove('selected');
+            nextItem.classList.add('selected');
+        }
+    };
+    let getCurrentItem = () => {
+        return result.querySelector("ul li a.selected");
+    }
+    const handleInputChange = (e) => {
+        switch (e.key) {
+            case "ArrowDown":
+                navigate('down');
+                return;
+            case "ArrowUp":
+                navigate('up');
+                return;
+            case "Enter":
+                let currentItem = getCurrentItem();
+                if (currentItem) {
+                    window.location = currentItem.href;
+                }
+                return;
+        }
+        state.query = e.target.value;
+        result.innerHTML = "";
+        let filteredResults = filter(items, state.query);
+        state.results = filteredResults;
+        let resultElements = renderResults(filteredResults);
+        if (filteredResults.length) {
+            hrElement.style.display = "block";
+            result.style.display = "block";
+            result.appendChild(resultElements);
+        }
+        if (filteredResults.length === 0) {
+            hideResults();
+        }
         if (inputElement.value !== "") {
             toggleClearButton(true);
         } else {
@@ -172,13 +183,28 @@ export default () => {
         hideContainer();
     };
 
+    const handleMouseOver = (e) => {
+        let items = result.querySelectorAll("ul li a")
+        for (let i = 0; i < items.length; i++) {
+            items[i].classList.remove('selected');
+        }
+        if (e.target.tagName.toLowerCase() === "a") {
+            e.target.classList.add("selected");
+            state.activeIndex = e.target.dataset.index;
+        }
+    };
 
-    document.addEventListener('keydown',handleKeyDown);
+
+    document.addEventListener('keydown', handleKeyDown);
+    result.addEventListener('mouseover', handleMouseOver);
     document.addEventListener('mousedown', handleMouseDown);
     closeButtonElement.addEventListener('mousedown', handleCloseClick);
     inputElement.addEventListener('keyup', handleInputChange);
-    inputElement.addEventListener('change', handleInputChange);
+    // inputElement.addEventListener('change', handleInputChange);
+    // inputElement.addEventListener('keydown', handleInputChange);
+
     form.addEventListener('submit', (e) => {
+        console.log('as');
         e.preventDefault();
         form.querySelector("input").focus();
     });

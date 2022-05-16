@@ -17,7 +17,7 @@
     box-sizing: border-box;
     box-shadow: 0 8px 22px 0 rgb(37 44 97 / 15%), 0 4px 6px 0 rgb(93 100 148 / 20%);
     background-color: #fff;
-    border-radius: 24px;
+    border-radius: 10px; /* check */
     overflow: hidden;
 }
 
@@ -114,14 +114,19 @@
     box-sizing: border-box;
     height: 550px;
     overflow: auto;
+    font-weight: 600;
 }
 #result ul li a {
     display: block;
-    background-color: aliceblue;
+    background-color: #f2f4ff;
     margin-bottom: 1rem;
+    font-size: 0.875rem;
     padding: 1.5rem;;
     border-radius: 8px;
+    text-decoration: none;
+    color: #121212;
 }
-#result ul li a:hover {
-    background-color: #b5cfdc;
+#result ul li a.selected {
+    color: #fff;
+    background-color: #5468ff;
 }
