@@ -7,6 +7,7 @@ let state = {
     threshold: 1000,
     query: "",
     results: [],
+    // usingKeyNav: false,
 };
 
 export default (options) => {
@@ -125,6 +126,7 @@ export default (options) => {
         if (nextItem) {
             currentItem.classList.remove('selected');
             nextItem.classList.add('selected');
+            nextItem.parentElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
         }
     };
     let getCurrentItem = () => {
@@ -170,6 +172,9 @@ export default (options) => {
     };
 
     const handleMouseOver = (e) => {
+        // if (state.usingKeyNav) {
+        //     return;
+        // }
         let items = result.querySelectorAll("ul li a")
         for (let i = 0; i < items.length; i++) {
             items[i].classList.remove('selected');

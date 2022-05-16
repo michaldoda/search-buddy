@@ -22,7 +22,7 @@
 }
 
 #form {
-    width: 100%;
+    width: 98%;
     position: relative;
     display: flex;
     height: 44px;
@@ -92,8 +92,8 @@
     background: none;
     height: 100%;
     cursor: pointer;
-    margin-left: 10px;
-    margin-right: 20px;
+    padding-right: 6px;
+    padding-left: 8px;
     color: #bbb;
 }
 
