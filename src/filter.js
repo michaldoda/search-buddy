@@ -1,7 +1,6 @@
 export default (items, query) => {
     let results = items.filter((el) => {
         let explode = query.split(" ");
-
         el.score = 0;
         for (let i = 0; i < explode.length; i++) {
             if (explode[i] === "") continue;
@@ -34,12 +33,14 @@ export default (items, query) => {
         if (withScore && el.score === withScore) {
             return {
                 name: el.name,
-                score: el.score
+                score: el.score,
+                path: el.path,
             }
         } else {
             return {
                 name: el.name,
-                score: el.score
+                score: el.score,
+                path: el.path,
             }
         }
     })
