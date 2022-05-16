@@ -117,10 +117,24 @@ export default (options) => {
 
     let navigate = (direction) => {
         let currentItem = result.querySelector("ul li a.selected");
-        if (!currentItem) return null;
+        if (!currentItem) {
+            let firstItem = result.querySelector("ul li a");
+            if (firstItem) {
+                firstItem.classList.add("selected");
+            } else {
+                return null
+            }
+        }
 
         let index = parseInt(currentItem?.dataset.index);
         index = direction === 'down' ? index + 1 : index - 1;
+        if (direction === 'up' && !currentItem.parentElement.previousElementSibling) {
+            console.log('nothing to do');
+            return;
+        } else if (direction === 'down' && !currentItem.parentElement.nextElementSibling) {
+            console.log('nothing to do');
+            return;
+        }
 
         let nextItem = result.querySelector('ul li a[data-index="'+index+'"]');
         if (nextItem) {
