@@ -104,11 +104,26 @@ export default () => {
         form.querySelector("input").focus();
     });
 
+    const showContainer = () => {
+        state.isOpen = true;
+        document.body.style.overflow = "hidden";
+        document.body.style.height = "100%";
+        container.style.display = "inline-block";
+        container.querySelector('input').focus();
+    };
+
     const hideContainer = () => {
         state.isOpen = false;
         container.style.display = "none";
         document.body.style.overflow = "auto";
         document.body.style.height = "100%";
+        inputElement.value = "";
+        hideResults();
+    };
+
+    const hideResults = () => {
+        hrElement.style.display = "none";
+        result.style.display = "none";
     };
 
     const handleMouseDown = (e) => {
@@ -124,11 +139,7 @@ export default () => {
 
             if (state.shiftLeftLog.length > 1) {
                 if (state.shiftLeftLog[state.shiftLeftLog.length-1].time - state.shiftLeftLog[state.shiftLeftLog.length-2].time < state.threshold) {
-                    state.isOpen = true;
-                    document.body.style.overflow = "hidden"; // ADD THIS LINE
-                    document.body.style.height = "100%"; // ADD THIS LINE
-                    container.style.display = "inline-block";
-                    container.querySelector('input').focus();
+                    showContainer();
                     state.shiftLeftLog = [];
                 } else {
                     state.shiftLeftLog = [];
