@@ -37,7 +37,7 @@
     flex-shrink: 0;
     height: 44px;
     order: 1;
-    width: 96%;
+    width: 99%;
 }
 
 #fieldsWrapper:focus-within {
@@ -129,4 +129,18 @@
 #result ul li a.selected {
     color: #fff;
     background-color: #5468ff;
+}
+ul li a:before {
+    content: "📄";
+    font-size: 1.2rem;
+    padding-right: 10px;
+    filter: grayscale(100%);
+}
+
+ul li a.magic:before {
+    content: "📄";
+}
+
+ul li a.magic:before {
+    content: "🪄";
 }

@@ -36,6 +36,7 @@ export default (items, query) => {
                     name: el.name,
                     score: el.score,
                     path: el.path,
+                    type: el.type,
                 }
             }
         } else {
@@ -43,6 +44,7 @@ export default (items, query) => {
                 name: el.name,
                 score: el.score,
                 path: el.path,
+                type: el.type,
             }
         }
     })

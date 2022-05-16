@@ -121,8 +121,9 @@ export default (options) => {
             let firstItem = result.querySelector("ul li a");
             if (firstItem) {
                 firstItem.classList.add("selected");
+                return;
             } else {
-                return null
+                return;
             }
         }
 
@@ -140,7 +141,7 @@ export default (options) => {
         if (nextItem) {
             currentItem.classList.remove('selected');
             nextItem.classList.add('selected');
-            nextItem.parentElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+            nextItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
         }
     };
     let getCurrentItem = () => {
