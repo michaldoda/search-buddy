@@ -6,6 +6,7 @@
     height: 100%;
     left: 0;
     top: 0;
+    z-index: 99999;
 }
 
 #formWrapper {
@@ -21,12 +22,23 @@
     /*overflow: hidden;*/
 }
 
+@media screen and (max-width: 800px) {
+    /*todo*/
+    #formWrapper {
+        margin: 0 !important;
+        width: 100% !important;
+        border-radius: 0 !important;
+    }
+}
+
+
 #form {
     width: 98%;
     position: relative;
     display: flex;
     height: 44px;
     padding: 0.5rem;
+    box-sizing: content-box;
 }
 
 #fieldsWrapper {
