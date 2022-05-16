@@ -131,13 +131,12 @@
     background-color: #5468ff;
 }
 ul li a:before {
-    content: "📄";
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     padding-right: 10px;
     filter: grayscale(100%);
 }
 
-ul li a.magic:before {
+ul li a.document:before {
     content: "📄";
 }
 
