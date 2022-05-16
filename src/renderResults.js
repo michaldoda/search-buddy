@@ -9,7 +9,7 @@ export default (results) => {
         }
 
         aElement.innerHTML = el.name + " - " + el.score;
-        aElement.href = "/";
+        aElement.href = el.path;
         liElement.appendChild(aElement);
         ulElement.appendChild(liElement);
     });
