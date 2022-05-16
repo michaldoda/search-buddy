@@ -18,7 +18,8 @@
     box-shadow: 0 8px 22px 0 rgb(37 44 97 / 15%), 0 4px 6px 0 rgb(93 100 148 / 20%);
     background-color: #fff;
     padding: 0.4rem;
-    border-radius: 4px;
+    border-radius: 24px;
+    overflow: hidden;
 }
 
 #form {
@@ -49,13 +50,13 @@
     border: 0;
     background: none;
     height: 100%;
-    width: 44px;
+    width: 60px;
 }
 
 #input {
     padding: 0;
     order: 2;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 400;
     border: 0;
     height: 40px;
@@ -80,7 +81,21 @@
     height: 100%;
     cursor: pointer;
     width: 44px;
+    color: #ccc;
+    border-right: solid 1px #eee;
+    visibility: hidden;
 }
+
+#close-button {
+    order: 4;
+    border: 0;
+    background: none;
+    height: 100%;
+    cursor: pointer;
+    width: 80px;
+    color: #bbb;
+}
+
 #formWrapper hr {
     border: 1px solid green;
     display: none;
@@ -89,22 +104,21 @@
 #result {
     position: relative;
     display: none;
-    height: 600px;
-    box-sizing: border-box;
-    overflow: auto;
+    height: 650px;
 }
-#result .items {
-    position: relative;
-}
+
 #result ul {
     padding: 1rem;
     list-style: none;
+    box-sizing: border-box;
+    height: 550px;
+    overflow: auto;
 }
 #result ul li a {
     display: block;
     background-color: aliceblue;
     margin-bottom: 1rem;
-    padding: 1.5rem;
+    padding: 1.5rem;;
     border-radius: 8px;
 }
 #result ul li a:hover {

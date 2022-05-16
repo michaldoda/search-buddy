@@ -21,7 +21,6 @@ export default () => {
     const result = document.createElement("div");
     result.setAttribute("id", "result");
     result.innerHTML = "" +
-        "<div class='items'>" +
         "<ul>" +
         "<li><a href=''>ok</a></li>" +
         "<li><a href=''>ok</a></li>" +
@@ -70,7 +69,6 @@ export default () => {
         "<li><a href=''>ok</a></li>" +
         "<li><a href=''>ok</a></li>" +
         "</ul>" +
-        "</div>" +
         "";
     formWrapper.appendChild(result);
 
@@ -82,6 +80,7 @@ export default () => {
     const searchButtonElement = document.createElement("button");
     searchButtonElement.setAttribute("id", "search-button");
     searchButtonElement.innerHTML = "&#128269;";
+    searchButtonElement.innerHTML = "<svg xmlns=\"http://www.w3.org/2000/svg\" style='color: #4947ff; margin-top: 4px; height: 20px; width: 20px' fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\"> <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z\"/> </svg>";
     searchButtonElement.type = "submit";
     fieldsWrapper.appendChild(searchButtonElement)
 
@@ -99,10 +98,10 @@ export default () => {
     clearButtonElement.type = "reset";
     fieldsWrapper.appendChild(clearButtonElement)
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        form.querySelector("input").focus();
-    });
+    const closeButtonElement = document.createElement("button");
+    closeButtonElement.setAttribute("id", "close-button");
+    closeButtonElement.innerHTML = "Cancel";
+    fieldsWrapper.appendChild(closeButtonElement)
 
     const showContainer = () => {
         state.isOpen = true;
@@ -124,6 +123,11 @@ export default () => {
     const hideResults = () => {
         hrElement.style.display = "none";
         result.style.display = "none";
+        toggleClearButton(false);
+    };
+
+    const toggleClearButton = (state) => {
+        clearButtonElement.style.visibility = state ? "visible" : "hidden";
     };
 
     const handleMouseDown = (e) => {
@@ -156,11 +160,31 @@ export default () => {
     const handleInputChange = (e) => {
         hrElement.style.display = "block";
         result.style.display = "block";
+        if (inputElement.value !== "") {
+            toggleClearButton(true);
+        } else {
+            hideResults();
+        }
     };
+
+    const handleCloseClick = () => {
+        hideContainer();
+    };
+
 
     document.addEventListener('keydown',handleKeyDown);
     document.addEventListener('mousedown', handleMouseDown);
-    inputElement.addEventListener('keydown', handleInputChange);
+    closeButtonElement.addEventListener('mousedown', handleCloseClick);
+    inputElement.addEventListener('keyup', handleInputChange);
+    inputElement.addEventListener('change', handleInputChange);
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        form.querySelector("input").focus();
+    });
+    form.addEventListener('reset', (e) => {
+        hideResults();
+        inputElement.focus();
+    });
 
     return container;
 }
