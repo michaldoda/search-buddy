@@ -29,12 +29,14 @@ export default (items, query) => {
     }
 
 
-    return results.map((el, index) => {
-        if (withScore && el.score === withScore) {
-            return {
-                name: el.name,
-                score: el.score,
-                path: el.path,
+    return results.filter((el, index) => {
+        if (withScore) {
+            if (el.score === withScore) {
+                return {
+                    name: el.name,
+                    score: el.score,
+                    path: el.path,
+                }
             }
         } else {
             return {
