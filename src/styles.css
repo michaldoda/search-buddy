@@ -24,6 +24,12 @@
     overflow: hidden;
 }
 
+@media screen and (max-height: 650px) {
+    #wrapper {
+        top: 2%;
+    }
+}
+
 @media screen and (max-width: 800px) {
     #wrapper {
         margin: 0 !important;
@@ -81,7 +87,7 @@
 #input {
     padding: 0;
     order: 2;
-    font-size: 1.25rem;
+    font-size: 20px;
     font-weight: 400;
     border: 0;
     height: 40px;
@@ -129,7 +135,7 @@
 }
 
 #result ul {
-    padding: 1rem;
+    padding: 16px;
     list-style: none;
     box-sizing: border-box;
     height: 450px;
@@ -139,27 +145,31 @@
 #result ul li a {
     display: block;
     background-color: #f2f4ff;
-    margin-bottom: 1rem;
-    font-size: 0.875rem;
-    padding: 1.5rem;;
+    margin-bottom: 16px;
+    font-size: 12px;
     border-radius: 8px;
     text-decoration: none;
     color: #121212;
+    padding: 22px;
 }
 #result ul li a.selected {
     color: #fff;
     background-color: #5468ff;
 }
-ul li a:before {
-    font-size: 1.5rem;
+ul li a span:before {
+    font-size: 16px;
     padding-right: 10px;
     filter: grayscale(100%);
 }
-
-ul li a.document:before {
+ul li a span {
+}
+ul li a span.title {
+    font-size: 14px;
+}
+ul li a span.document:before {
     content: "📄";
 }
 
-ul li a.magic:before {
+ul li a span.magic:before {
     content: "🪄";
 }

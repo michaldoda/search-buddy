@@ -1,4 +1,4 @@
-export default (results) => {
+export default (results, options) => {
     let ulElement = document.createElement("ul");
     results.map((el, index) => {
         let liElement = document.createElement("li");
@@ -7,9 +7,19 @@ export default (results) => {
         if (index === 0) {
             aElement.classList.add('selected');
         }
-        aElement.innerHTML = el.title +" - " +  el.score;
-        aElement.classList.add(el.type ? el.type : 'document');
         aElement.href = el.path;
+        if (options.useIcons) {
+            const spanIconElement = document.createElement("span");
+            spanIconElement.classList.add(el.type ? el.type : 'document')
+            spanIconElement.classList.add('icon')
+            aElement.appendChild(spanIconElement);
+        }
+
+        const spanTitleElement = document.createElement("span");
+        spanTitleElement.classList.add("title");
+        spanTitleElement.innerHTML = el.title +" - " +  el.score;
+        aElement.appendChild(spanTitleElement);
+
         liElement.appendChild(aElement);
         ulElement.appendChild(liElement);
     });

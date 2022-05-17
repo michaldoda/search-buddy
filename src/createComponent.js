@@ -173,7 +173,7 @@ export default (options) => {
         resultElement.innerHTML = "";
         let filteredResults = filter(items, state.query);
         state.results = filteredResults;
-        let resultElements = buildResultElements(filteredResults);
+        let resultElements = buildResultElements(filteredResults, options);
         if (filteredResults.length) {
             resultElement.style.display = "block";
             resultElement.appendChild(resultElements);
@@ -198,8 +198,13 @@ export default (options) => {
             items[i].classList.remove('selected');
         }
         if (e.target.tagName.toLowerCase() === "a") {
+            if (e.target.classList.contains('selected')) return;
             e.target.classList.add("selected");
             state.activeIndex = e.target.dataset.index;
+        } else if (e.target.tagName.toLowerCase() === "span") {
+            if (e.target.parentElement.classList.contains('selected')) return;
+            e.target.parentElement.classList.add("selected");
+            state.activeIndex = e.target.parentElement.dataset.index;
         }
     };
 
