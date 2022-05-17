@@ -118,8 +118,8 @@
     height: 100%;
     cursor: pointer;
     padding-right: 6px;
-    padding-left: 8px;
-    color: #bbb;
+    padding-left: 16px;
+    color: #656565;
 }
 
 #result {

@@ -56,7 +56,7 @@ export default (options) => {
 
     const closeButtonElement = document.createElement("button");
     closeButtonElement.setAttribute("id", "close-button");
-    closeButtonElement.innerHTML = "Cancel";
+    closeButtonElement.innerHTML = "Close";
     fieldsWrapper.appendChild(closeButtonElement)
 
     const showContainer = () => {
@@ -115,6 +115,7 @@ export default (options) => {
 
     let navigate = (direction) => {
         let currentItem = resultElement.querySelector("ul li a.selected");
+        inputElement.focus();
         if (!currentItem) {
             let firstItem = resultElement.querySelector("ul li a");
             if (firstItem) {
@@ -137,22 +138,35 @@ export default (options) => {
         if (nextItem) {
             currentItem.classList.remove('selected');
             nextItem.classList.add('selected');
-            nextItem.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'start' });
+            nextItem.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'start' });
         }
     };
-    const handleInputChange = (e) => {
+
+    const handleNavigation = (e) => {
         switch (e.key) {
             case "ArrowDown":
                 navigate('down');
+                inputElement.scrollLeft = inputElement.scrollWidth;
                 return;
             case "ArrowUp":
                 navigate('up');
+                inputElement.scrollLeft = inputElement.scrollWidth;
                 return;
             case "Enter":
                 let href = resultElement.querySelector("ul li a.selected")?.href;
                 if (href) {
                     window.location = href;
                 }
+                return;
+        }
+    }
+    const handleInputChange = (e) => {
+        switch (e.key) {
+            case "ArrowDown":
+                return;
+            case "ArrowUp":
+                return;
+            case "Enter":
                 return;
         }
         state.query = e.target.value;
@@ -195,6 +209,7 @@ export default (options) => {
     document.addEventListener('mousedown', handleMouseDown);
     closeButtonElement.addEventListener('mousedown', handleCloseClick);
     inputElement.addEventListener('keyup', handleInputChange);
+    inputElement.addEventListener('keydown', handleNavigation);
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
