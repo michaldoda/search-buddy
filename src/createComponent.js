@@ -253,9 +253,13 @@ const createComponent = (options) => {
         inputElement.focus();
     });
 
-    return container;
+    return {container, showContainer};
 }
 
-window["AwesomePlugin"] = (options) => {
-    document.body.appendChild(createComponent(options));
+window["AwesomePlugin"] = {
+    initialize: (options) => {
+        let plugin = createComponent(options);
+        document.body.appendChild(plugin.container);
+        return plugin;
+    },
 };
