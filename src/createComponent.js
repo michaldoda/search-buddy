@@ -3,7 +3,7 @@ import buildResultElements from './buildResultElements'
 
 const createComponent = (options) => {
     let state = {
-        shiftLeftLog: [],
+        keyDownLog: [],
         isOpen: false,
         threshold: 1000,
         query: "",
@@ -92,22 +92,9 @@ const createComponent = (options) => {
             hideContainer();
         }
     }
-    const handleKeyDown = (e) => {
-        if (e.code === "ShiftLeft" && state.isOpen === false) {
-            state.shiftLeftLog.push({
-                time: Date.now()
-            });
 
-            if (state.shiftLeftLog.length > 1) {
-                if (state.shiftLeftLog[state.shiftLeftLog.length-1].time - state.shiftLeftLog[state.shiftLeftLog.length-2].time < state.threshold) {
-                    showContainer();
-                    state.shiftLeftLog = [];
-                } else {
-                    state.shiftLeftLog = [];
-                }
-            }
-
-        } else if (e.code === "Escape") {
+    const handleEscape = (e) => {
+        if (e.code === "Escape") {
             if (state.isOpen === true) {
                 hideContainer();
             }
@@ -237,12 +224,50 @@ const createComponent = (options) => {
     };
 
 
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keydown', (e) => {
+        if (!options.keyShortcut) return;
+
+        switch (options.keyShortcut) {
+            case "doubleLeftShift":
+                if (e.code === "ShiftLeft" && state.isOpen === false) {
+                    state.keyDownLog.push({
+                        time: Date.now()
+                    });
+
+                    if (state.keyDownLog.length > 1) {
+                        if (state.keyDownLog[state.keyDownLog.length-1].time - state.keyDownLog[state.keyDownLog.length-2].time < state.threshold) {
+                            showContainer();
+                            state.keyDownLog = [];
+                        } else {
+                            state.keyDownLog = [];
+                        }
+                    }
+
+                }
+                break;
+            default:
+                let split = options.keyShortcut.split("+");
+                if ([split[0], split[1]].includes(e.code)) {
+                    state.keyDownLog.push(e.code);
+                    if (state.keyDownLog.length > 1
+                        && state.keyDownLog.includes(split[0])
+                        && state.keyDownLog.includes(split[1])
+                    ) {
+                        e.preventDefault();
+                        showContainer();
+                        state.keyDownLog = [];
+                    }
+                }
+                break;
+        }
+    })
+
     resultElement.addEventListener('mousemove', handleMouseOver);
     document.addEventListener('mousedown', handleMouseDown);
     closeButtonElement.addEventListener('mousedown', handleCloseClick);
     inputElement.addEventListener('keyup', handleInputChange);
     inputElement.addEventListener('keydown', handleNavigation);
+    inputElement.addEventListener('keydown', handleEscape);
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
