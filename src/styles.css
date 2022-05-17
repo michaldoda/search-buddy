@@ -1,4 +1,4 @@
-#container {
+.AwesomePlugin-container {
     display: none;
     position: fixed;
     background-color: rgba(233,233,233,0.9);
@@ -6,56 +6,88 @@
     height: 100%;
     left: 0;
     top: 0;
+    z-index: 99999;
 }
 
-#formWrapper {
+.AwesomePlugin-wrapper {
     position: relative;
     width: 60%;
     max-width: 800px;
-    max-height: 80%;
-    margin: 4rem auto;
+    height: auto;
+    max-height: 85%;
+    margin: 0 auto;
+    top: 10%;
     box-sizing: border-box;
     box-shadow: 0 8px 22px 0 rgb(37 44 97 / 15%), 0 4px 6px 0 rgb(93 100 148 / 20%);
     background-color: #fff;
-    padding: 0.4rem;
-    border-radius: 4px;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-#form {
-    width: 100%;
+@media screen and (max-height: 650px) {
+    .AwesomePlugin-wrapper {
+        top: 2%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .AwesomePlugin-wrapper {
+        margin: 0 !important;
+        top: 0;
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        border-radius: 0 !important;
+    }
+    .AwesomePlugin-result {
+        height: 100% !important;
+    }
+    .AwesomePlugin-result ul {
+        height: 90% !important;
+    }
+}
+
+
+.AwesomePlugin-form-wrapper {
     position: relative;
+    width: auto;
+    border-bottom: 1px solid #f4f4f4;
+    padding: 8px;
+    box-sizing: content-box;
+}
+
+.AwesomePlugin-form {
     display: flex;
     height: 44px;
 }
 
-#fieldsWrapper {
+.AwesomePlugin-form-wrapper-fields-wrapper {
     align-items: center;
     display: flex;
-    overflow: hidden;
     background-color: #fff;
     flex-shrink: 0;
     height: 44px;
     order: 1;
-    width: 100%;
+    width: 99%;
 }
 
-#fieldsWrapper:focus-within {
+.AwesomePlugin-form-wrapper-fields-wrapper:focus-within {
     border: none;
     outline: none;
 }
 
-#search-button {
+.AwesomePlugin-form-wrapper-fields-wrapper-search-button {
     order: 1;
     border: 0;
     background: none;
     height: 100%;
-    width: 44px;
+    width: 60px;
 }
 
-#input {
+.AwesomePlugin-form-wrapper-fields-wrapper-input {
     padding: 0;
     order: 2;
-    font-size: 1.3rem;
+    font-size: 20px;
     font-weight: 400;
     border: 0;
     height: 40px;
@@ -65,48 +97,75 @@
     color: rgb(17, 11, 50);
 }
 
-#input:focus-visible {
+.AwesomePlugin-form-wrapper-fields-wrapper-input:focus-visible {
     border: none;
     outline: none;
 }
-#input::placeholder {
+.AwesomePlugin-form-wrapper-fields-wrapper-input::placeholder {
     color: rgba(128,126,163,.8);
 }
 
-#clear-button {
+.AwesomePlugin-form-wrapper-fields-wrapper-clear-button {
     order: 3;
     border: 0;
     background: none;
     height: 100%;
     cursor: pointer;
     width: 44px;
-}
-#formWrapper hr {
-    border: 1px solid green;
-    display: none;
+    color: #ccc;
+    border-right: solid 1px #eee;
+    visibility: hidden;
 }
 
-#result {
+.AwesomePlugin-form-wrapper-fields-wrapper-close-button {
+    order: 4;
+    border: 0;
+    background: none;
+    height: 100%;
+    cursor: pointer;
+    padding-right: 6px;
+    padding-left: 16px;
+    color: #656565;
+}
+
+.AwesomePlugin-result {
     position: relative;
     display: none;
-    height: 600px;
-    box-sizing: border-box;
-    overflow: auto;
+    height: 100%;
 }
-#result .items {
-    position: relative;
-}
-#result ul {
-    padding: 1rem;
+
+.AwesomePlugin-result ul.AwesomePlugin-result-ul {
+    padding: 16px;
     list-style: none;
+    box-sizing: border-box;
+    height: 450px;
+    overflow: auto;
+    font-weight: 600;
 }
-#result ul li a {
+.AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a.AwesomePlugin-result-a  {
     display: block;
-    background-color: aliceblue;
-    margin-bottom: 1rem;
-    padding: 1.5rem;
+    background-color: #f2f4ff;
+    margin-bottom: 16px;
+    font-size: 16px;
     border-radius: 8px;
+    text-decoration: none;
+    color: #121212;
+    padding: 22px;
 }
-#result ul li a:hover {
-    background-color: #b5cfdc;
+.AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a.selected {
+    color: #fff;
+    background-color: #5468ff;
+}
+.AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a span.AwesomePlugin-result-span:before,
+.AwesomePlugin-icon-custom  {
+    font-size: 16px;
+    padding-right: 10px;
+}
+
+.AwesomePlugin-container ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a.AwesomePlugin-result-a span.AwesomePlugin-result-span.AwesomePlugin-icon.AwesomePlugin-icon-document:before {
+    content: "📄";
+}
+
+.AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a.AwesomePlugin-result-a span.AwesomePlugin-result-span.AwesomePlugin-icon.AwesomePlugin-icon-magic:before {
+    content: "🪄";
 }

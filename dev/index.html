@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8" />
     <title>Example</title>
     <style>
@@ -11,6 +12,7 @@
 </head>
 <body>
 <h1>Example page</h1>
+<button id="open">Open</button>
 <ul>
     <li>Random item</li><li>Random item</li><li>Random item</li><li>Random item</li><li>Random item</li>
     <li>Random item</li><li>Random item</li><li>Random item</li><li>Random item</li><li>Random item</li>
@@ -25,5 +27,20 @@
     <li>Random item</li><li>Random item</li><li>Random item</li><li>Random item</li><li>Random item</li>
 </ul>
 <script src="development.js"></script>
+<script>
+    let plugin = AwesomePlugin.initialize({
+        mode: "local", // todo async sessionStorage
+        source: [
+            { title: "Homepage", path: "/", icon: "🚀", },
+            { title: "Settings", path: "/settings", icon: "⚙", },
+            { title: "Article XyZ", path: "/articles/xyz",  }
+        ],
+        keyShortcut: "doubleLeftShift",
+        placeholder: "Quick search...",
+        useIcons: true,
+    });
+
+    document.querySelector('#open').addEventListener('click', plugin.showContainer);
+</script>
 </body>
 </html>
