@@ -18,11 +18,11 @@ export default (options) => {
 
     const form = document.createElement("form");
     form.setAttribute("id", "form");
-    wrapper.append(form);
+    const formWrapper = document.createElement("div");
+    formWrapper.setAttribute("id", "formWrapper");
+    formWrapper.appendChild(form);
+    wrapper.append(formWrapper);
     container.appendChild(wrapper);
-    let hrElement = document.createElement("div");
-    hrElement.setAttribute("id", "divider");
-    wrapper.appendChild(hrElement);
 
     const resultElement = document.createElement("div");
     resultElement.setAttribute("id", "result");
@@ -77,7 +77,6 @@ export default (options) => {
     };
 
     const hideResults = () => {
-        hrElement.style.display = "none";
         resultElement.style.display = "none";
         resultElement.innerHTML = "";
         toggleClearButton(false);
@@ -162,7 +161,6 @@ export default (options) => {
         state.results = filteredResults;
         let resultElements = buildResultElements(filteredResults);
         if (filteredResults.length) {
-            hrElement.style.display = "block";
             resultElement.style.display = "block";
             resultElement.appendChild(resultElements);
         }
