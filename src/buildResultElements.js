@@ -14,14 +14,20 @@ export default (results, options) => {
         if (options.useIcons) {
             const spanIconElement = document.createElement("span");
             spanIconElement.classList.add("AwesomePlugin-result-span");
-            spanIconElement.classList.add(el.type === "magic" ? "AwesomePlugin-icon-magic" : 'AwesomePlugin-icon-document')
+            if (el.icon) {
+                spanIconElement.classList.add("AwesomePlugin-icon-custom");
+                spanIconElement.innerHTML = el.icon;
+            } else {
+                spanIconElement.classList.add(el.type === "magic" ? "AwesomePlugin-icon-magic" : 'AwesomePlugin-icon-document')
+            }
             spanIconElement.classList.add('AwesomePlugin-icon')
             aElement.appendChild(spanIconElement);
         }
 
         const spanTitleElement = document.createElement("span");
         spanTitleElement.classList.add("AwesomePlugin-result-span");
-        spanTitleElement.innerHTML = el.title +" - " +  el.score;
+        spanTitleElement.innerHTML = el.title;
+        spanTitleElement.setAttribute("title", el.score);
         aElement.appendChild(spanTitleElement);
 
         liElement.appendChild(aElement);

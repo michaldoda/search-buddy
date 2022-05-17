@@ -156,10 +156,10 @@
     color: #fff;
     background-color: #5468ff;
 }
-.AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a span.AwesomePlugin-result-span:before {
+.AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a span.AwesomePlugin-result-span:before,
+.AwesomePlugin-icon-custom  {
     font-size: 16px;
     padding-right: 10px;
-    filter: grayscale(100%);
 }
 
 .AwesomePlugin-container ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a.AwesomePlugin-result-a span.AwesomePlugin-result-span.AwesomePlugin-icon.AwesomePlugin-icon-document:before {
