@@ -11,37 +11,37 @@ let state = {
 
 export default (options) => {
     const container = document.createElement("div");
-    container.setAttribute("id", "container");
+    container.classList.add("AwesomePlugin-container");
 
     const wrapper = document.createElement("div");
-    wrapper.setAttribute("id", "wrapper");
+    wrapper.classList.add("AwesomePlugin-wrapper");
 
     const form = document.createElement("form");
-    form.setAttribute("id", "form");
+    form.classList.add( "AwesomePlugin-form");
     const formWrapper = document.createElement("div");
-    formWrapper.setAttribute("id", "formWrapper");
+    formWrapper.classList.add("AwesomePlugin-form-wrapper");
     formWrapper.appendChild(form);
     wrapper.append(formWrapper);
     container.appendChild(wrapper);
 
     const resultElement = document.createElement("div");
-    resultElement.setAttribute("id", "result");
+    resultElement.classList.add("AwesomePlugin-result");
     wrapper.appendChild(resultElement);
 
     const fieldsWrapper = document.createElement("div");
-    fieldsWrapper.setAttribute("id", "fieldsWrapper");
+    fieldsWrapper.classList.add( "AwesomePlugin-form-wrapper-fields-wrapper");
     form.appendChild(fieldsWrapper);
 
 
     const searchButtonElement = document.createElement("button");
-    searchButtonElement.setAttribute("id", "search-button");
+    searchButtonElement.classList.add("AwesomePlugin-form-wrapper-fields-wrapper-search-button");
     searchButtonElement.innerHTML = "&#128269;";
     searchButtonElement.innerHTML = "<svg xmlns=\"http://www.w3.org/2000/svg\" style='color: #4947ff; margin-top: 4px; height: 20px; width: 20px' fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\"> <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z\"/> </svg>";
     searchButtonElement.type = "submit";
     fieldsWrapper.appendChild(searchButtonElement)
 
     const inputElement = document.createElement("input");
-    inputElement.setAttribute("id", "input");
+    inputElement.classList.add("AwesomePlugin-form-wrapper-fields-wrapper-input");
     inputElement.type = "text";
     inputElement.placeholder = "Start typing";
     inputElement.autocomplete = "off";
@@ -49,13 +49,13 @@ export default (options) => {
     fieldsWrapper.appendChild(inputElement)
 
     const clearButtonElement = document.createElement("button");
-    clearButtonElement.setAttribute("id", "clear-button");
+    clearButtonElement.classList.add("AwesomePlugin-form-wrapper-fields-wrapper-clear-button");
     clearButtonElement.innerHTML = "&#10005;";
     clearButtonElement.type = "reset";
     fieldsWrapper.appendChild(clearButtonElement)
 
     const closeButtonElement = document.createElement("button");
-    closeButtonElement.setAttribute("id", "close-button");
+    closeButtonElement.classList.add("AwesomePlugin-form-wrapper-fields-wrapper-close-button");
     closeButtonElement.innerHTML = "Close";
     fieldsWrapper.appendChild(closeButtonElement)
 
@@ -64,7 +64,7 @@ export default (options) => {
         document.body.style.overflow = "hidden";
         document.body.style.height = "100%";
         container.style.display = "inline-block";
-        container.querySelector('input').focus();
+        container.querySelector('.AwesomePlugin-form-wrapper-fields-wrapper-input').focus();
     };
 
     const hideContainer = () => {

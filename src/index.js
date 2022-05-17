@@ -6,7 +6,7 @@ window["search"] = (options) => {
         window["search-container"] = 1;
         document.body.appendChild(createComponent({
             container: "container",
-            useIcons: false,
+            useIcons: true,
             ...options,
         }));
     }

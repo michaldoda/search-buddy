@@ -1,4 +1,4 @@
-#container {
+.AwesomePlugin-container {
     display: none;
     position: fixed;
     background-color: rgba(233,233,233,0.9);
@@ -9,7 +9,7 @@
     z-index: 99999;
 }
 
-#wrapper {
+.AwesomePlugin-wrapper {
     position: relative;
     width: 60%;
     max-width: 800px;
@@ -20,18 +20,18 @@
     box-sizing: border-box;
     box-shadow: 0 8px 22px 0 rgb(37 44 97 / 15%), 0 4px 6px 0 rgb(93 100 148 / 20%);
     background-color: #fff;
-    border-radius: 10px; /* check */
+    border-radius: 10px;
     overflow: hidden;
 }
 
 @media screen and (max-height: 650px) {
-    #wrapper {
+    .AwesomePlugin-wrapper {
         top: 2%;
     }
 }
 
 @media screen and (max-width: 800px) {
-    #wrapper {
+    .AwesomePlugin-wrapper {
         margin: 0 !important;
         top: 0;
         width: 100% !important;
@@ -39,16 +39,16 @@
         max-height: 100% !important;
         border-radius: 0 !important;
     }
-    #result {
+    .AwesomePlugin-result {
         height: 100% !important;
     }
-    #result ul {
+    .AwesomePlugin-result ul {
         height: 90% !important;
     }
 }
 
 
-#formWrapper {
+.AwesomePlugin-form-wrapper {
     position: relative;
     width: auto;
     border-bottom: 1px solid #f4f4f4;
@@ -56,12 +56,12 @@
     box-sizing: content-box;
 }
 
-#form {
+.AwesomePlugin-form {
     display: flex;
     height: 44px;
 }
 
-#fieldsWrapper {
+.AwesomePlugin-form-wrapper-fields-wrapper {
     align-items: center;
     display: flex;
     background-color: #fff;
@@ -71,12 +71,12 @@
     width: 99%;
 }
 
-#fieldsWrapper:focus-within {
+.AwesomePlugin-form-wrapper-fields-wrapper:focus-within {
     border: none;
     outline: none;
 }
 
-#search-button {
+.AwesomePlugin-form-wrapper-fields-wrapper-search-button {
     order: 1;
     border: 0;
     background: none;
@@ -84,7 +84,7 @@
     width: 60px;
 }
 
-#input {
+.AwesomePlugin-form-wrapper-fields-wrapper-input {
     padding: 0;
     order: 2;
     font-size: 20px;
@@ -97,15 +97,15 @@
     color: rgb(17, 11, 50);
 }
 
-#input:focus-visible {
+.AwesomePlugin-form-wrapper-fields-wrapper-input:focus-visible {
     border: none;
     outline: none;
 }
-#input::placeholder {
+.AwesomePlugin-form-wrapper-fields-wrapper-input::placeholder {
     color: rgba(128,126,163,.8);
 }
 
-#clear-button {
+.AwesomePlugin-form-wrapper-fields-wrapper-clear-button {
     order: 3;
     border: 0;
     background: none;
@@ -117,7 +117,7 @@
     visibility: hidden;
 }
 
-#close-button {
+.AwesomePlugin-form-wrapper-fields-wrapper-close-button {
     order: 4;
     border: 0;
     background: none;
@@ -128,13 +128,13 @@
     color: #656565;
 }
 
-#result {
+.AwesomePlugin-result {
     position: relative;
     display: none;
     height: 100%;
 }
 
-#result ul {
+.AwesomePlugin-result ul.AwesomePlugin-result-ul {
     padding: 16px;
     list-style: none;
     box-sizing: border-box;
@@ -142,34 +142,30 @@
     overflow: auto;
     font-weight: 600;
 }
-#result ul li a {
+.AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a.AwesomePlugin-result-a  {
     display: block;
     background-color: #f2f4ff;
     margin-bottom: 16px;
-    font-size: 12px;
+    font-size: 14px;
     border-radius: 8px;
     text-decoration: none;
     color: #121212;
     padding: 22px;
 }
-#result ul li a.selected {
+.AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a.selected {
     color: #fff;
     background-color: #5468ff;
 }
-ul li a span:before {
+.AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a span.AwesomePlugin-result-span:before {
     font-size: 16px;
     padding-right: 10px;
     filter: grayscale(100%);
 }
-ul li a span {
-}
-ul li a span.title {
-    font-size: 14px;
-}
-ul li a span.document:before {
+
+.AwesomePlugin-container ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a.AwesomePlugin-result-a span.AwesomePlugin-result-span.AwesomePlugin-icon.AwesomePlugin-icon-document:before {
     content: "📄";
 }
 
-ul li a span.magic:before {
+.AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a.AwesomePlugin-result-a span.AwesomePlugin-result-span.AwesomePlugin-icon.AwesomePlugin-icon-magic:before {
     content: "🪄";
 }
