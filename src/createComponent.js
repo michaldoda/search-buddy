@@ -155,6 +155,8 @@ const createComponent = (options) => {
                 let href = resultElement.querySelector("ul li a.selected")?.href;
                 if (href) {
                     window.location = href;
+                } else if (options.fallbackSearchUrl) {
+                    window.location = options.fallbackSearchUrl + inputElement.value;
                 }
                 return;
         }
