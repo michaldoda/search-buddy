@@ -1,5 +1,4 @@
 import filter from './filter';
-import items from "./items";
 import buildResultElements from './buildResultElements'
 let state = {
     shiftLeftLog: [],
@@ -7,6 +6,7 @@ let state = {
     threshold: 1000,
     query: "",
     results: [],
+    sourceData: null,
 };
 
 export default (options) => {
@@ -160,6 +160,24 @@ export default (options) => {
                 return;
         }
     }
+    const getItems = async () => {
+        if (state.sourceData !== null) {
+            return new Promise((resolve) => {
+                resolve(state.sourceData);
+            });
+        }
+        if (options.mode === "local") {
+            return new Promise((resolve) => {
+                state.sourceData = options.source;
+                resolve(options.source);
+            });
+        } else if (options.mode === "async") {
+            return options.source().then((res) => {
+                state.sourceData = res.data;
+                return res.data;
+            });
+        }
+    };
     const handleInputChange = (e) => {
         switch (e.key) {
             case "ArrowDown":
@@ -170,22 +188,25 @@ export default (options) => {
                 return;
         }
         state.query = e.target.value;
-        resultElement.innerHTML = "";
-        let filteredResults = filter(items, state.query);
-        state.results = filteredResults;
-        let resultElements = buildResultElements(filteredResults, options);
-        if (filteredResults.length) {
-            resultElement.style.display = "block";
-            resultElement.appendChild(resultElements);
-        }
-        if (filteredResults.length === 0) {
-            hideResults();
-        }
-        if (inputElement.value !== "") {
-            toggleClearButton(true);
-        } else {
-            hideResults();
-        }
+        getItems().then((res) => {
+            let itemToProcess = res;
+            resultElement.innerHTML = "";
+            let filteredResults = filter(itemToProcess, state.query);
+            state.results = filteredResults;
+            let resultElements = buildResultElements(filteredResults, options);
+            if (filteredResults.length) {
+                resultElement.style.display = "block";
+                resultElement.appendChild(resultElements);
+            }
+            if (filteredResults.length === 0) {
+                hideResults();
+            }
+            if (e.target.value !== "") {
+                toggleClearButton(true);
+            } else {
+                hideResults();
+            }
+        });
     };
 
     const handleCloseClick = () => {

@@ -1,15 +1,12 @@
 import './styles.css';
 import createComponent from "./createComponent";
-
-window["search"] = (options) => {
-    if (!window["search-container"]) {
-        window["search-container"] = 1;
-        document.body.appendChild(createComponent({
-            container: "container",
-            useIcons: true,
-            ...options,
-        }));
-    }
+import items from "./items";
+window["AwesomePlugin"] = (options) => {
+    document.body.appendChild(createComponent(options));
 };
 
-search();
+AwesomePlugin({
+    mode: "local",
+    source: items,
+    keyShortcut: "doubleLeftShift",
+});
