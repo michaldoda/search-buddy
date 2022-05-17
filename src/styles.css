@@ -9,21 +9,22 @@
     z-index: 99999;
 }
 
-#formWrapper {
+#wrapper {
     position: relative;
     width: 60%;
     max-width: 800px;
-    max-height: 80%;
+    height: auto;
+    max-height: 85%;
     margin: 4rem auto;
     box-sizing: border-box;
     box-shadow: 0 8px 22px 0 rgb(37 44 97 / 15%), 0 4px 6px 0 rgb(93 100 148 / 20%);
     background-color: #fff;
     border-radius: 10px; /* check */
-
+    overflow: hidden;
 }
 
 @media screen and (max-width: 800px) {
-    #formWrapper {
+    #wrapper {
         margin: 0 !important;
         width: 100% !important;
         height: 100% !important;
@@ -116,7 +117,7 @@
     color: #bbb;
 }
 
-#formWrapper #divider {
+#wrapper #divider {
     border-bottom: 1px solid #f4f4f4;
     display: none;
 }
@@ -124,7 +125,8 @@
 #result {
     position: relative;
     display: none;
-    height: 650px;
+    height: 100%;
+    /* ??? overflow: hidden;*/
 }
 
 #result ul {

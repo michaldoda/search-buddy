@@ -1,3 +1,14 @@
 import './styles.css';
 import createComponent from "./createComponent";
-document.body.appendChild(createComponent());
+
+window["search"] = (options) => {
+    if (!window["search-container"]) {
+        window["search-container"] = 1;
+        document.body.appendChild(createComponent({
+            container: "container",
+            ...options,
+        }));
+    }
+};
+
+search();

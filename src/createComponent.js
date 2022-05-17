@@ -13,20 +13,20 @@ export default (options) => {
     const container = document.createElement("div");
     container.setAttribute("id", "container");
 
-    const formWrapper = document.createElement("div");
-    formWrapper.setAttribute("id", "formWrapper");
+    const wrapper = document.createElement("div");
+    wrapper.setAttribute("id", "wrapper");
 
     const form = document.createElement("form");
     form.setAttribute("id", "form");
-    formWrapper.append(form);
-    container.appendChild(formWrapper);
+    wrapper.append(form);
+    container.appendChild(wrapper);
     let hrElement = document.createElement("div");
     hrElement.setAttribute("id", "divider");
-    formWrapper.appendChild(hrElement);
+    wrapper.appendChild(hrElement);
 
     const resultElement = document.createElement("div");
     resultElement.setAttribute("id", "result");
-    formWrapper.appendChild(resultElement);
+    wrapper.appendChild(resultElement);
 
     const fieldsWrapper = document.createElement("div");
     fieldsWrapper.setAttribute("id", "fieldsWrapper");
