@@ -35,9 +35,10 @@
             { title: "Settings", path: "/settings", icon: "⚙", },
             { title: "Article XyZ", path: "/articles/xyz",  }
         ],
-        keyShortcut: "doubleLeftShift",
+        keyShortcut: "ControlLeft+Slash",
         placeholder: "Quick search...",
         useIcons: true,
+        fallbackSearchUrl: "/search?q=",
     });
 
     document.querySelector('#open').addEventListener('click', plugin.showContainer);
