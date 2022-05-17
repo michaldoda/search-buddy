@@ -7,7 +7,7 @@ export default (results) => {
         if (index === 0) {
             aElement.classList.add('selected');
         }
-        aElement.innerHTML = el.name +" - " +  el.score;
+        aElement.innerHTML = el.title +" - " +  el.score;
         aElement.classList.add(el.type ? el.type : 'document');
         aElement.href = el.path;
         liElement.appendChild(aElement);

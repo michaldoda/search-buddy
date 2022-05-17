@@ -4,7 +4,7 @@ export default (items, query) => {
         el.score = 0;
         for (let i = 0; i < explode.length; i++) {
             if (explode[i] === "") continue;
-            if (el.name.toLowerCase().includes(explode[i].toLowerCase())) el.score++;
+            if (el.title.toLowerCase().includes(explode[i].toLowerCase())) el.score++;
         }
         if (el.score > 0) {
             return el;
@@ -30,7 +30,7 @@ export default (items, query) => {
 
     return results.filter((el) => {
         let item = {
-            name: el.name,
+            title: el.title,
             score: el.score,
             path: el.path,
             type: el.type,
