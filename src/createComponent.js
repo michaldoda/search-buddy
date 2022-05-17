@@ -192,7 +192,13 @@ const createComponent = (options) => {
         getItems().then((res) => {
             let itemToProcess = res;
             resultElement.innerHTML = "";
-            let filteredResults = filter(itemToProcess, state.query);
+            let filteredResults;
+            if (e.target.value === " ") {
+                filteredResults = itemToProcess;
+            } else {
+                filteredResults = filter(itemToProcess, state.query);
+            }
+
             state.results = filteredResults;
             let resultElements = buildResultElements(filteredResults, options);
             if (filteredResults.length) {
