@@ -1,15 +1,16 @@
 import filter from './filter';
 import buildResultElements from './buildResultElements'
-let state = {
-    shiftLeftLog: [],
-    isOpen: false,
-    threshold: 1000,
-    query: "",
-    results: [],
-    sourceData: null,
-};
 
-export default (options) => {
+const createComponent = (options) => {
+    let state = {
+        shiftLeftLog: [],
+        isOpen: false,
+        threshold: 1000,
+        query: "",
+        results: [],
+        sourceData: null,
+    };
+
     const container = document.createElement("div");
     container.classList.add("AwesomePlugin-container");
 
@@ -43,7 +44,7 @@ export default (options) => {
     const inputElement = document.createElement("input");
     inputElement.classList.add("AwesomePlugin-form-wrapper-fields-wrapper-input");
     inputElement.type = "text";
-    inputElement.placeholder = "Start typing";
+    inputElement.placeholder = options.placeholder ?? "Start typing";
     inputElement.autocomplete = "off";
     inputElement.spellcheck = false;
     fieldsWrapper.appendChild(inputElement)
@@ -248,3 +249,7 @@ export default (options) => {
 
     return container;
 }
+
+window["AwesomePlugin"] = (options) => {
+    document.body.appendChild(createComponent(options));
+};
