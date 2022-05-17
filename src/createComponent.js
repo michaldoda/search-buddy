@@ -147,11 +147,9 @@ const createComponent = (options) => {
         switch (e.key) {
             case "ArrowDown":
                 navigate('down');
-                inputElement.scrollLeft = inputElement.scrollWidth;
                 return;
             case "ArrowUp":
                 navigate('up');
-                inputElement.scrollLeft = inputElement.scrollWidth;
                 return;
             case "Enter":
                 let href = resultElement.querySelector("ul li a.selected")?.href;
