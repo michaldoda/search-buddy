@@ -134,9 +134,11 @@ const createComponent = (options) => {
         switch (e.key) {
             case "ArrowDown":
                 navigate('down');
+                e.preventDefault();
                 return;
             case "ArrowUp":
                 navigate('up');
+                e.preventDefault();
                 return;
             case "Enter":
                 let href = resultElement.querySelector("ul li a.selected")?.href;
@@ -167,8 +169,13 @@ const createComponent = (options) => {
         }
     };
     const handleInputChange = (e) => {
+        let arrowDownClicked = false;
         switch (e.key) {
             case "ArrowDown":
+                if (e.target.value === "" && !state.results.length) {
+                    arrowDownClicked = true;
+                    break;
+                }
                 return;
             case "ArrowUp":
                 return;
@@ -180,7 +187,7 @@ const createComponent = (options) => {
             let itemToProcess = res;
             resultElement.innerHTML = "";
             let filteredResults;
-            if (e.target.value === " ") {
+            if (e.target.value === " " || (e.target.value === "" && arrowDownClicked)) {
                 filteredResults = itemToProcess;
             } else {
                 filteredResults = filter(itemToProcess, state.query);
@@ -198,7 +205,9 @@ const createComponent = (options) => {
             if (e.target.value !== "") {
                 toggleClearButton(true);
             } else {
-                hideResults();
+                if (!arrowDownClicked) {
+                    hideResults();
+                }
             }
         });
     };
