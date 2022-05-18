@@ -1,6 +1,6 @@
 {
   "name": "search-prototype",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "scripts": {
     "test": "jest",
@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/michaldoda/search-prototype.git"
   },
+  "files": [
+    "/dist"
+  ],
   "keywords": [],
   "author": {
     "name": "Michal Doda",
