@@ -1,5 +1,5 @@
 <h1 align="center">
-🍭 search-buddy <sup style="font-size: 10px;>*ultra lightweight < 1kb</sup>
+🍭 search-buddy <sup style="font-size: 10px;">*ultra lightweight < 1kb</sup>
 </h1>  
 
 ![Search-buddy js plugin](docs/search-buddy-logo.png?raw=true)
