@@ -1,7 +1,9 @@
 import filter from './filter';
 import buildResultElements from './buildResultElements'
+import { buildDOMTree } from './buildDOMTree';
+import './styles.css';
 
-const createComponent = (options) => {
+const SpotlightJs = (options) => {
     let state = {
         keyDownLog: [],
         isOpen: false,
@@ -9,58 +11,19 @@ const createComponent = (options) => {
         query: "",
         results: [],
         sourceData: null,
+        isKeyShortcutDouble: false,
     };
 
-    const container = document.createElement("div");
-    container.classList.add("AwesomePlugin-container");
+    const {
+        container,
+        form,
+        inputElement,
+        clearButtonElement,
+        closeButtonElement,
+        resultElement,
+    } = buildDOMTree(options);
 
-    const wrapper = document.createElement("div");
-    wrapper.classList.add("AwesomePlugin-wrapper");
-
-    const form = document.createElement("form");
-    form.classList.add( "AwesomePlugin-form");
-    const formWrapper = document.createElement("div");
-    formWrapper.classList.add("AwesomePlugin-form-wrapper");
-    formWrapper.appendChild(form);
-    wrapper.append(formWrapper);
-    container.appendChild(wrapper);
-
-    const resultElement = document.createElement("div");
-    resultElement.classList.add("AwesomePlugin-result");
-    wrapper.appendChild(resultElement);
-
-    const fieldsWrapper = document.createElement("div");
-    fieldsWrapper.classList.add( "AwesomePlugin-form-wrapper-fields-wrapper");
-    form.appendChild(fieldsWrapper);
-
-
-    const searchButtonElement = document.createElement("button");
-    searchButtonElement.classList.add("AwesomePlugin-form-wrapper-fields-wrapper-search-button");
-    searchButtonElement.innerHTML = "&#128269;";
-    searchButtonElement.innerHTML = "<svg xmlns=\"http://www.w3.org/2000/svg\" style='color: rgba(0,0,0,0.4); margin-top: 4px; height: 20px; width: 20px' fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\"> <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z\"/> </svg>";
-    searchButtonElement.type = "submit";
-    fieldsWrapper.appendChild(searchButtonElement)
-
-    const inputElement = document.createElement("input");
-    inputElement.classList.add("AwesomePlugin-form-wrapper-fields-wrapper-input");
-    inputElement.type = "text";
-    inputElement.placeholder = options.placeholder ?? "Start typing";
-    inputElement.autocomplete = "off";
-    inputElement.spellcheck = false;
-    fieldsWrapper.appendChild(inputElement)
-
-    const clearButtonElement = document.createElement("button");
-    clearButtonElement.classList.add("AwesomePlugin-form-wrapper-fields-wrapper-clear-button");
-    clearButtonElement.innerHTML = "&#10005;";
-    clearButtonElement.type = "reset";
-    fieldsWrapper.appendChild(clearButtonElement)
-
-    const closeButtonElement = document.createElement("button");
-    closeButtonElement.classList.add("AwesomePlugin-form-wrapper-fields-wrapper-close-button");
-    closeButtonElement.innerHTML = "Close";
-    fieldsWrapper.appendChild(closeButtonElement)
-
-    const showContainer = () => {
+    const show = () => {
         state.isOpen = true;
         document.body.style.overflow = "hidden";
         document.body.style.height = "100%";
@@ -68,7 +31,7 @@ const createComponent = (options) => {
         container.querySelector('.AwesomePlugin-form-wrapper-fields-wrapper-input').focus();
     };
 
-    const hideContainer = () => {
+    const hide = () => {
         state.isOpen = false;
         container.style.display = "none";
         document.body.style.overflow = "auto";
@@ -89,19 +52,19 @@ const createComponent = (options) => {
 
     const handleMouseDown = (e) => {
         if (state.isOpen === true && e.target === container) { //todo review if needed
-            hideContainer();
+            hide();
         }
     }
 
     const handleEscape = (e) => {
         if (e.code === "Escape") {
             if (state.isOpen === true) {
-                hideContainer();
+                hide();
             }
         }
     };
 
-    let navigate = (direction) => {
+    const navigate = (direction) => {
         let currentItem = resultElement.querySelector("ul li a.selected");
         inputElement.focus();
         if (!currentItem) {
@@ -213,7 +176,7 @@ const createComponent = (options) => {
     };
 
     const handleCloseClick = () => {
-        hideContainer();
+        hide();
     };
 
     const handleMouseOver = (e) => {
@@ -232,20 +195,30 @@ const createComponent = (options) => {
         }
     };
 
+    const handleKeyShortcutsClean = () => {
+        if (!state.isKeyShortcutDouble) {
+            state.keyDownLog = [];
+        }
+    };
 
-    document.addEventListener('keydown', (e) => {
+    const handleKeyShortcuts = (e) => {
         if (!options.keyShortcut) return;
 
+        let dblCheck = options.keyShortcut.slice(0, 6) === "double";
+        if (dblCheck) state.isKeyShortcutDouble = true;
+        let keyShortcut = dblCheck ? options.keyShortcut.replace("double", "") : options.keyShortcut;
+
         switch (options.keyShortcut) {
-            case "doubleLeftShift":
-                if (e.code === "ShiftLeft" && state.isOpen === false) {
+            case "double"+keyShortcut:
+                if (!dblCheck) return;
+                if (e.code === keyShortcut && state.isOpen === false) {
                     state.keyDownLog.push({
                         time: Date.now()
                     });
 
                     if (state.keyDownLog.length > 1) {
                         if (state.keyDownLog[state.keyDownLog.length-1].time - state.keyDownLog[state.keyDownLog.length-2].time < state.threshold) {
-                            showContainer();
+                            show();
                             state.keyDownLog = [];
                         } else {
                             state.keyDownLog = [];
@@ -263,37 +236,45 @@ const createComponent = (options) => {
                         && state.keyDownLog.includes(split[1])
                     ) {
                         e.preventDefault();
-                        showContainer();
+                        show();
                         state.keyDownLog = [];
                     }
                 }
                 break;
         }
-    })
+    }
 
-    resultElement.addEventListener('mousemove', handleMouseOver);
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        form.querySelector("input").focus();
+    };
+
+    const handleFormReset = () => {
+        hideResults();
+        inputElement.focus();
+    };
+
     document.addEventListener('mousedown', handleMouseDown);
+    document.addEventListener('keydown', handleKeyShortcuts);
+    document.addEventListener('keyup', handleKeyShortcutsClean);
+    resultElement.addEventListener('mousemove', handleMouseOver);
     closeButtonElement.addEventListener('mousedown', handleCloseClick);
     inputElement.addEventListener('keyup', handleInputChange);
     inputElement.addEventListener('keydown', handleNavigation);
     inputElement.addEventListener('keydown', handleEscape);
+    form.addEventListener('submit', handleFormSubmit);
+    form.addEventListener('reset', handleFormReset);
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        form.querySelector("input").focus();
-    });
-    form.addEventListener('reset', () => {
-        hideResults();
-        inputElement.focus();
-    });
 
-    return {container, showContainer};
+    document.body.appendChild(container);
+
+    return {
+        container,
+        show,
+        hide,
+    };
 }
 
-window["AwesomePlugin"] = {
-    initialize: (options) => {
-        let plugin = createComponent(options);
-        document.body.appendChild(plugin.container);
-        return plugin;
-    },
-};
+
+
+export { SpotlightJs };
