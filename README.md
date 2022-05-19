@@ -26,7 +26,11 @@ It is especially useful in projects that are stuck in complex navigation structu
 - responsive design
 - and more, please check Live demo!
 
-![Search-buddy example](docs/search-buddy.png?raw=true)
+
+<p align="center">
+  <img width="460" src="https://github.com/michaldoda/search-buddy/blob/main/docs/search-buddy.png?raw=true" alt="search-buddy js plugin">
+</p>
+
 
 ## Installation
 
