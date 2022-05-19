@@ -12,6 +12,8 @@
     "type": "git",
     "url": "git+https://github.com/michaldoda/search-prototype.git"
   },
+  "module": "dist/esm/index.js",
+  "style": "dist/esm/index.css",
   "files": [
     "/dist"
   ],
@@ -29,6 +31,7 @@
   "devDependencies": {
     "css-loader": "^6.7.1",
     "jest": "^28.1.0",
+    "rollup-plugin-import-css": "^3.0.3",
     "style-loader": "^3.3.1",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
