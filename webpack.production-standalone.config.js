@@ -2,9 +2,9 @@ const path = require('path');
 
 module.exports = {
     mode: "production",
-    entry: './src/index.js',
+    entry: './src/index-standalone.js',
     output: {
-        filename: 'development.js',
+        filename: 'standalone.min.js',
         path: path.resolve(__dirname, 'dist'),
     },
     module: {
