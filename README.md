@@ -2,7 +2,9 @@
 🍭 search-buddy
 </h1>  
 
-![Search-buddy js plugin](docs/search-buddy-logo.png?raw=true)
+<p align="center">
+ <img width="460" src="https://github.com/michaldoda/search-buddy/blob/main/docs/search-buddy-logo.png?raw=true" alt="search-buddy js plugin">
+</p>
 
 <p>
     <a target="_blank" rel="noopener noreferrer" href="https://github.com/michaldoda/react-supervisor/actions/workflows/release.yml/badge.svg"><img src="https://github.com/michaldoda/react-supervisor/actions/workflows/release.yml/badge.svg" alt="release workflow result" style="max-width:100%;"></a>
