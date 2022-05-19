@@ -1,7 +1,8 @@
-.AwesomePlugin-container {
+.SearchBuddy-container {
     display: none;
     position: fixed;
     background-color: rgba(155, 155, 155, 0.85);
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(195, 195, 194, 0.5) 100%),radial-gradient(ellipse at top left, rgb(174 206 255 / 50%), transparent 50%),radial-gradient(ellipse at top right, rgb(255 247 214 / 50%), #a048ab00 90%),radial-gradient(ellipse at center right, rgb(255 255 255 / 90%), transparent 93%),radial-gradient(ellipse at center left, rgb(255 202 227 / 70%), transparent 99%);
     width: 100%;
     height: 100%;
     left: 0;
@@ -10,7 +11,7 @@
     font-family: system-ui;
 }
 
-.AwesomePlugin-wrapper {
+.SearchBuddy-wrapper {
     position: relative;
     width: 60%;
     max-width: 800px;
@@ -27,13 +28,13 @@
 }
 
 @media screen and (max-height: 650px) {
-    .AwesomePlugin-wrapper {
+    .SearchBuddy-wrapper {
         top: 2%;
     }
 }
 
 @media screen and (max-width: 800px) {
-    .AwesomePlugin-wrapper {
+    .SearchBuddy-wrapper {
         margin: 0 !important;
         top: 0;
         width: 100% !important;
@@ -41,16 +42,16 @@
         max-height: 100% !important;
         border-radius: 0 !important;
     }
-    .AwesomePlugin-result {
+    .SearchBuddy-result {
         height: 100% !important;
     }
-    .AwesomePlugin-result ul {
+    .SearchBuddy-result ul {
         height: 90% !important;
     }
 }
 
 
-.AwesomePlugin-form-wrapper {
+.SearchBuddy-form-wrapper {
     position: relative;
     width: auto;
     border-bottom: 1px solid rgba(0, 0, 0, .1);
@@ -58,12 +59,12 @@
     box-sizing: content-box;
 }
 
-.AwesomePlugin-form {
+.SearchBuddy-form {
     display: flex;
     height: 44px;
 }
 
-.AwesomePlugin-form-wrapper-fields-wrapper {
+.SearchBuddy-form-wrapper-fields-wrapper {
     align-items: center;
     display: flex;
     flex-shrink: 0;
@@ -72,12 +73,12 @@
     width: 99%;
 }
 
-.AwesomePlugin-form-wrapper-fields-wrapper:focus-within {
+.SearchBuddy-form-wrapper-fields-wrapper:focus-within {
     border: none;
     outline: none;
 }
 
-.AwesomePlugin-form-wrapper-fields-wrapper-search-button {
+.SearchBuddy-form-wrapper-fields-wrapper-search-button {
     order: 1;
     border: 0;
     background: none;
@@ -85,7 +86,7 @@
     width: 60px;
 }
 
-.AwesomePlugin-form-wrapper-fields-wrapper-input {
+.SearchBuddy-form-wrapper-fields-wrapper-input {
     padding: 0;
     order: 2;
     font-size: 20px;
@@ -99,15 +100,15 @@
     background-color: inherit;
 }
 
-.AwesomePlugin-form-wrapper-fields-wrapper-input:focus-visible {
+.SearchBuddy-form-wrapper-fields-wrapper-input:focus-visible {
     border: none;
     outline: none;
 }
-.AwesomePlugin-form-wrapper-fields-wrapper-input::placeholder {
+.SearchBuddy-form-wrapper-fields-wrapper-input::placeholder {
     color: rgba(0,0,0,0.4);
 }
 
-.AwesomePlugin-form-wrapper-fields-wrapper-clear-button {
+.SearchBuddy-form-wrapper-fields-wrapper-clear-button {
     order: 3;
     border: 0;
     background: none;
@@ -119,7 +120,7 @@
     visibility: hidden;
 }
 
-.AwesomePlugin-form-wrapper-fields-wrapper-close-button {
+.SearchBuddy-form-wrapper-fields-wrapper-close-button {
     order: 4;
     border: 0;
     background: none;
@@ -130,28 +131,28 @@
     color: #656565;
 }
 
-.AwesomePlugin-result {
+.SearchBuddy-result {
     position: relative;
     display: none;
     height: 100%;
 }
 
-.AwesomePlugin-result ul.AwesomePlugin-result-ul::-webkit-scrollbar {
+.SearchBuddy-result ul.SearchBuddy-result-ul::-webkit-scrollbar {
     width: 6px;
     margin-right: 10px;
 }
 
-.AwesomePlugin-result ul.AwesomePlugin-result-ul::-webkit-scrollbar-track {
+.SearchBuddy-result ul.SearchBuddy-result-ul::-webkit-scrollbar-track {
 }
 
-.AwesomePlugin-result ul.AwesomePlugin-result-ul::-webkit-scrollbar-thumb {
+.SearchBuddy-result ul.SearchBuddy-result-ul::-webkit-scrollbar-thumb {
     background: rgba(120,120,120);
 }
 
-.AwesomePlugin-result ul.AwesomePlugin-result-ul::-webkit-scrollbar-thumb:hover {
+.SearchBuddy-result ul.SearchBuddy-result-ul::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
-.AwesomePlugin-result ul.AwesomePlugin-result-ul {
+.SearchBuddy-result ul.SearchBuddy-result-ul {
     padding: 16px;
     list-style: none;
     box-sizing: border-box;
@@ -159,7 +160,7 @@
     overflow: auto;
     font-weight: 600;
 }
-.AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a.AwesomePlugin-result-a  {
+.SearchBuddy-result ul.SearchBuddy-result-ul li.SearchBuddy-result-li a.SearchBuddy-result-a  {
     display: block;
     margin-bottom: 4px;
     font-size: 16px;
@@ -169,12 +170,12 @@
     padding: 8px 10px;
     font-weight: 400;
 }
-.AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a.selected {
+.SearchBuddy-result ul.SearchBuddy-result-ul li.SearchBuddy-result-li a.selected {
     color: #fff;
     background-color: #2557a2;
     font-weight: 600;
 }
-.AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a span.AwesomePlugin-icon {
+.SearchBuddy-result ul.SearchBuddy-result-ul li.SearchBuddy-result-li a span.SearchBuddy-icon {
     font-size: 16px;
     margin-right: 10px;
     padding: 4px;

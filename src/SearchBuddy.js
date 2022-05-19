@@ -3,7 +3,15 @@ import buildResultElements from './buildResultElements'
 import { buildDOMTree } from './buildDOMTree';
 import './styles.css';
 
-const SpotlightJs = (options) => {
+const SearchBuddy = (options) => {
+    options = {
+        fallbackSearchUrl: null,
+        keyShortcut: null,
+        placeholder: "Start typing...",
+        withIcons: true,
+        ...options,
+    }
+
     let state = {
         keyDownLog: [],
         isOpen: false,
@@ -28,7 +36,7 @@ const SpotlightJs = (options) => {
         document.body.style.overflow = "hidden";
         document.body.style.height = "100%";
         container.style.display = "inline-block";
-        container.querySelector('.AwesomePlugin-form-wrapper-fields-wrapper-input').focus();
+        container.querySelector('.SearchBuddy-form-wrapper-fields-wrapper-input').focus();
     };
 
     const hide = () => {
@@ -277,4 +285,4 @@ const SpotlightJs = (options) => {
 
 
 
-export { SpotlightJs };
+export { SearchBuddy };

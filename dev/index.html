@@ -4,11 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8" />
     <title>Example</title>
-    <style>
-        * {
-            font-family: system-ui;
-        }
-    </style>
+    <style></style>
 </head>
 <body>
 <h1>Example page</h1>
@@ -26,38 +22,18 @@
     <li>Random item</li><li>Random item</li><li>Random item</li><li>Random item</li><li>Random item</li>
     <li>Random item</li><li>Random item</li><li>Random item</li><li>Random item</li><li>Random item</li>
 </ul>
-<script src="development.js"></script>
+<script src="development-standalone.js"></script>
 <script>
-    let plugin = AwesomePlugin.initialize({
+    let searchBuddy = SearchBuddy({
         mode: "local", // todo async sessionStorage
         source: [
             { title: "Homepage", path: "/", icon: "🚀", },
             { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Settings", path: "/settings", icon: "🛠️", },
-            { title: "Article XyZ", path: "/articles/xyz",  }
         ],
-        keyShortcut: "ControlLeft+Slash",
-        placeholder: "Quick search...",
-        withIcons: true,
-        fallbackSearchUrl: "/search?q=",
+        keyShortcut: "doubleShiftLeft",
     });
 
-    document.querySelector('#open').addEventListener('click', plugin.showContainer);
+    document.querySelector('#open').addEventListener('click', searchBuddy.show);
 </script>
 </body>
 </html>

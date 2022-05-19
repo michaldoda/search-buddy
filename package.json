@@ -1,33 +1,38 @@
 {
-  "name": "search-prototype",
-  "version": "0.1.0",
-  "description": "",
+  "name": "search-buddy",
+  "version": "1.0.0",
+  "description": "Your search-buddy who will get you to the right URL. Ultra small (< 1kb after gzip), flexible and no dependency required. It offers a built-in filtering algorithm for client side processing.",
+  "keywords": [
+    "search",
+    "search plugin",
+    "navigation plugin",
+    "spotlight"
+  ],
   "scripts": {
     "test": "jest",
     "dev:watch": "webpack serve -c webpack.development.config.js",
     "dev": "webpack --config webpack.development.config.js",
-    "production": "webpack --config webpack.production-standalone.config.js"
+    "production": "webpack --config webpack.production-standalone.config.js && rollup src/index.js -c"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/michaldoda/search-prototype.git"
+    "url": "git+https://github.com/michaldoda/search-buddy.git"
   },
   "module": "dist/esm/index.js",
   "style": "dist/esm/index.css",
   "files": [
     "/dist"
   ],
-  "keywords": [],
   "author": {
     "name": "Michal Doda",
     "email": "michael.johnny.b@gmail.com",
-    "url": "https://github.com/michaldoda"
+    "url": "https://mevelix.com"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/michaldoda/search-prototype/issues"
+    "url": "https://github.com/michaldoda/search-buddy/issues"
   },
-  "homepage": "https://github.com/michaldoda/search-prototype#readme",
+  "homepage": "https://github.com/michaldoda/search-buddy#readme",
   "devDependencies": {
     "css-loader": "^6.7.1",
     "jest": "^28.1.0",

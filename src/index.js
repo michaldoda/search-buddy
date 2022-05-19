@@ -1,2 +1,2 @@
-import { SpotlightJs } from './SpotlightJs';
-export { SpotlightJs };
+import { SearchBuddy } from './SearchBuddy';
+export { SearchBuddy };

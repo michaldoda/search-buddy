@@ -1,3 +1,3 @@
-import { SpotlightJs } from './SpotlightJs';
-window["SpotlightJs"] = SpotlightJs;
-export { SpotlightJs };
+import { SearchBuddy } from './SearchBuddy';
+window["SearchBuddy"] = SearchBuddy;
+export { SearchBuddy };
