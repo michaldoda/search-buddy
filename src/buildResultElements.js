@@ -1,7 +1,10 @@
 export default (results, options) => {
     let ulElement = document.createElement("ul");
     ulElement.classList.add("SearchBuddy-result-ul");
-    results.map((el, index) => {
+
+    for (let index = 0; index < results.length; index++) {
+        if (options.maxResults && index >= options.maxResults) break;
+
         let liElement = document.createElement("li");
         liElement.classList.add("SearchBuddy-result-li")
         let aElement = document.createElement("a");
@@ -10,13 +13,13 @@ export default (results, options) => {
         if (index === 0) {
             aElement.classList.add('selected');
         }
-        aElement.href = el.path;
+        aElement.href = results[index].path;
         if (options.withIcons) {
             const spanIconElement = document.createElement("span");
             spanIconElement.classList.add("SearchBuddy-result-span");
             spanIconElement.classList.add("SearchBuddy-icon");
-            if (el.icon) {
-                spanIconElement.innerHTML = el.icon;
+            if (results[index].icon) {
+                spanIconElement.innerHTML = results[index].icon;
             } else {
                 spanIconElement.innerHTML = "📄";
             }
@@ -25,13 +28,13 @@ export default (results, options) => {
 
         const spanTitleElement = document.createElement("span");
         spanTitleElement.classList.add("SearchBuddy-result-span");
-        spanTitleElement.innerHTML = el.title;
-        spanTitleElement.setAttribute("title", el.score);
+        spanTitleElement.innerHTML = results[index].title;
+        spanTitleElement.setAttribute("title", results[index].score);
         aElement.appendChild(spanTitleElement);
 
         liElement.appendChild(aElement);
         ulElement.appendChild(liElement);
-    });
+    }
 
     return ulElement;
 };

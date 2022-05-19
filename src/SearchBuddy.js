@@ -9,6 +9,8 @@ const SearchBuddy = (options) => {
         keyShortcut: null,
         placeholder: "Start typing...",
         withIcons: true,
+        maxResults: 25,
+        stateSave: false,
         ...options,
     }
 
@@ -18,7 +20,7 @@ const SearchBuddy = (options) => {
         threshold: 1000,
         query: "",
         results: [],
-        sourceData: null,
+        cachedItems: null,
         isKeyShortcutDouble: false,
     };
 
@@ -122,20 +124,27 @@ const SearchBuddy = (options) => {
         }
     }
     const getItems = async () => {
-        if (state.sourceData !== null) {
+        let items = state.cachedItems;
+        if (!items && options.stateSave) {
+            items = JSON.parse(sessionStorage.getItem('SearchBuddyItems'));
+        }
+        if (items) {
+            state.cachedItems = items;
             return new Promise((resolve) => {
-                resolve(state.sourceData);
+                resolve(state.cachedItems);
             });
         }
         if (options.mode === "local") {
             return new Promise((resolve) => {
-                state.sourceData = options.source;
-                resolve(options.source);
+                if (options.stateSave) sessionStorage.setItem('SearchBuddyItems', JSON.stringify(options.items));
+                state.cachedItems = options.items;
+                resolve(options.items);
             });
         } else if (options.mode === "async") {
-            return options.source().then((res) => {
-                state.sourceData = res.data;
-                return res.data;
+            return options.items().then((res) => {
+                if (options.stateSave) sessionStorage.setItem('SearchBuddyItems', JSON.stringify(res));
+                state.cachedItems = res;
+                return res;
             });
         }
     };
