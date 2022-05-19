@@ -1,5 +1,5 @@
 <h1 align="center">
-🍭 search-buddy <sup style="font-size: 10px;">*ultra lightweight < 1kb</sup>
+🍭 search-buddy
 </h1>  
 
 ![Search-buddy js plugin](docs/search-buddy-logo.png?raw=true)
@@ -11,7 +11,7 @@
     <a target="_blank" href="https://www.npmjs.com/package/react-supervisor"><img src="https://flat.badgen.net/npm/license/react-supervisor" alt="react-supervisor license" /></a>
 </p>
 
-**search-buddy** is an open‑source javascript plugin. It can help you create instant search and/or facilitate navigation between pages. It was written in pure JS without any dependencies, those make it ultra lightweight (* *~0.2kb after gzip*).
+**search-buddy** is an open‑source ultra lightweight javascript plugin (* **<1kb**). It can help you create instant search and/or facilitate navigation between pages. It was written in pure JS without any dependencies, those make it ultra lightweight. * *~0.2kb after gzip*.
 
 It is especially useful in projects that are stuck in complex navigation structures (e.g. admin panel). It will surely make your users' everyday things more enjoyable.
 
