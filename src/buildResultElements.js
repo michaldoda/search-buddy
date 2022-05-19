@@ -11,16 +11,15 @@ export default (results, options) => {
             aElement.classList.add('selected');
         }
         aElement.href = el.path;
-        if (options.useIcons) {
+        if (options.withIcons) {
             const spanIconElement = document.createElement("span");
             spanIconElement.classList.add("AwesomePlugin-result-span");
+            spanIconElement.classList.add("AwesomePlugin-icon");
             if (el.icon) {
-                spanIconElement.classList.add("AwesomePlugin-icon-custom");
                 spanIconElement.innerHTML = el.icon;
             } else {
-                spanIconElement.classList.add(el.type === "magic" ? "AwesomePlugin-icon-magic" : 'AwesomePlugin-icon-document')
+                spanIconElement.innerHTML = "📄";
             }
-            spanIconElement.classList.add('AwesomePlugin-icon')
             aElement.appendChild(spanIconElement);
         }
 

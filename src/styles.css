@@ -1,7 +1,7 @@
 .AwesomePlugin-container {
     display: none;
     position: fixed;
-    background-color: rgba(90, 90, 90, 0.9);
+    background-color: rgba(155, 155, 155, 0.85);
     width: 100%;
     height: 100%;
     left: 0;
@@ -136,7 +136,19 @@
 }
 
 .AwesomePlugin-result ul.AwesomePlugin-result-ul::-webkit-scrollbar {
-    display: none;
+    width: 6px;
+    margin-right: 10px;
+}
+
+.AwesomePlugin-result ul.AwesomePlugin-result-ul::-webkit-scrollbar-track {
+}
+
+.AwesomePlugin-result ul.AwesomePlugin-result-ul::-webkit-scrollbar-thumb {
+    background: rgba(120,120,120);
+}
+
+.AwesomePlugin-result ul.AwesomePlugin-result-ul::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 .AwesomePlugin-result ul.AwesomePlugin-result-ul {
     padding: 16px;
@@ -157,21 +169,12 @@
     font-weight: 400;
 }
 .AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a.selected {
-    color: #fefefe;
-    background-color: #1365e0;
+    color: #fff;
+    background-color: #2557a2;
     font-weight: 600;
 }
-.AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a span.AwesomePlugin-result-span:before,
-.AwesomePlugin-icon-custom  {
+.AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a span.AwesomePlugin-icon {
     font-size: 16px;
     margin-right: 10px;
     padding: 4px;
-}
-
-.AwesomePlugin-container ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a.AwesomePlugin-result-a span.AwesomePlugin-result-span.AwesomePlugin-icon.AwesomePlugin-icon-document:before {
-    content: "📄";
-}
-
-.AwesomePlugin-result ul.AwesomePlugin-result-ul li.AwesomePlugin-result-li a.AwesomePlugin-result-a span.AwesomePlugin-result-span.AwesomePlugin-icon.AwesomePlugin-icon-magic:before {
-    content: "🪄";
 }
