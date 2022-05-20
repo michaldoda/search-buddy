@@ -34,8 +34,10 @@
   },
   "homepage": "https://github.com/michaldoda/search-buddy#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.18.0",
     "css-loader": "^6.7.1",
     "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
     "rollup-plugin-import-css": "^3.0.3",
     "style-loader": "^3.3.1",
     "webpack": "^5.72.1",
