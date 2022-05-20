@@ -67,6 +67,43 @@ You also need to load styles
 ## Installation via CDN (jsDelivr)
 This script **contains all** javascript and css styles, there is no need to load any additional file.
 
+
+## Digging Deeper
+
+### fetch `items` with async
+
+As you know, it may happen that you have much more URLs, then the recommended solution is to use async mode with session cache.
+
+Instead of passing array you can simple pass an async function, this function will be resolved by `search-buddy`. This function MUST return just an array of items.
+```js
+SearchBuddy({
+    mode: 'async',
+    items: async () => { /* ... */ },
+    stateSave: true, // <-- enable cache with sessionStorage
+    keyShortcut: "doubleShiftLeft",
+});
+
+```
+
+#### example
+```js
+SearchBuddy({
+    mode: 'async',
+    keyShortcut: "doubleShiftLeft",
+    stateSave: true,
+    items: async () => {
+        const getData = () => {
+            return fetch('/api/search-buddy-items.json')
+                .then(response => response.json())
+                .then(data => data);
+        };
+        return new Promise((resolve, reject) => {
+            resolve(getData());
+        });
+    },
+});
+```
+
 ```html
 <script src="https://cdn.jsdelivr.net/npm/search-buddy@latest/dist/standalone.min.js"></script>
 <script>
