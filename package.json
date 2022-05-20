@@ -1,6 +1,6 @@
 {
   "name": "search-buddy",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Your search-buddy who will get you to the right URL. Ultra small (< 1kb after gzip), flexible and no dependency required. It offers a built-in filtering algorithm for client side processing.",
   "keywords": [
     "search",
@@ -32,7 +32,7 @@
   "bugs": {
     "url": "https://github.com/michaldoda/search-buddy/issues"
   },
-  "homepage": "https://github.com/michaldoda/search-buddy#readme",
+  "homepage": "https://michaldoda.github.io/search-buddy/",
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.18.0",
     "@babel/preset-env": "^7.18.0",

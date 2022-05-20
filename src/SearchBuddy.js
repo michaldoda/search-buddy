@@ -10,6 +10,8 @@ const SearchBuddy = (options) => {
         withIcons: true,
         maxResults: 25,
         stateSave: false,
+        items: [],
+        mode: 'local',
         ...options,
     }
 
@@ -86,7 +88,7 @@ const SearchBuddy = (options) => {
             }
         }
 
-        let index = parseInt(currentItem?.dataset.index);
+        let index = parseInt(currentItem.dataset.index);
         index = direction === 'down' ? index + 1 : index - 1;
         if (direction === 'up' && !currentItem.parentElement.previousElementSibling) {
             return;
@@ -113,9 +115,9 @@ const SearchBuddy = (options) => {
                 e.preventDefault();
                 return;
             case "Enter":
-                let href = resultElement.querySelector("ul li a.selected")?.href;
-                if (href) {
-                    window.location = href;
+                let aEl = resultElement.querySelector("ul li a.selected");
+                if (aEl) {
+                    window.location = aEl.getAttribute("href");
                 } else if (options.fallbackSearchUrl) {
                     window.location = options.fallbackSearchUrl + inputElement.value;
                 }

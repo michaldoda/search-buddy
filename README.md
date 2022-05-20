@@ -47,7 +47,6 @@ npm i search-buddy
 import { SearchBuddy } from 'search-buddy';
 
 let searchBuddy = SearchBuddy({
-    mode: "local",
     items: [
         { title: "Settings", path: "/settings", icon: "🛠️" },
         { title: "Users", path: "/users", icon: "👥️" }
@@ -73,7 +72,6 @@ This script **contains all** javascript and css styles, there is no need to load
 <script src="https://cdn.jsdelivr.net/npm/search-buddy@1.0.0/dist/standalone.min.js"></script>
 <script>
   let searchBuddy = SearchBuddy({
-    mode: "local",
     items: [
       { title: "Settings", path: "/settings", icon: "🛠️" },
       { title: "Users", path: "/users", icon: "👥️" }

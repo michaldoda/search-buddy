@@ -32,7 +32,7 @@ const buildDOMTree = (options) => {
     const inputElement = document.createElement("input");
     inputElement.classList.add("SearchBuddy-form-wrapper-fields-wrapper-input");
     inputElement.type = "text";
-    inputElement.placeholder = options.placeholder ?? "Start typing";
+    inputElement.placeholder = options.placeholder ? options.placeholder : "Start typing";
     inputElement.autocomplete = "off";
     inputElement.spellcheck = false;
     fieldsWrapper.appendChild(inputElement)
