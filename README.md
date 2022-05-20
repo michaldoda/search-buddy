@@ -3,7 +3,7 @@
 </h1>  
 
 <p align="center">
- <img width="560" src="https://github.com/michaldoda/search-buddy/blob/main/docs/images/search-buddy-logo.png?raw=true" alt="search-buddy js plugin">
+ <img width="" src="https://github.com/michaldoda/search-buddy/blob/main/docs/images/search-buddy-logo.png?raw=true" alt="search-buddy js plugin">
 </p>
 
 <p>
