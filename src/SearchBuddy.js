@@ -1,7 +1,6 @@
 import filter from './filter';
 import buildResultElements from './buildResultElements'
 import { buildDOMTree } from './buildDOMTree';
-import './styles.css';
 
 const SearchBuddy = (options) => {
     options = {
@@ -61,7 +60,7 @@ const SearchBuddy = (options) => {
     };
 
     const handleMouseDown = (e) => {
-        if (state.isOpen === true && e.target === container) { //todo review if needed
+        if (state.isOpen === true && e.target === container) {
             hide();
         }
     }

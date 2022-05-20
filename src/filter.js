@@ -1,4 +1,6 @@
 export default (items, query) => {
+    if (!Array.isArray(items) || !query || (Array.isArray(items) && items.length === 0)) return [];
+
     let results = items.filter((el) => {
         let explode = query.split(" ");
         el.score = 0;

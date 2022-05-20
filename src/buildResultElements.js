@@ -3,7 +3,7 @@ export default (results, options) => {
     ulElement.classList.add("SearchBuddy-result-ul");
 
     for (let index = 0; index < results.length; index++) {
-        if (options.maxResults && index >= options.maxResults) break;
+        if (options?.maxResults && index >= options.maxResults) break;
 
         let liElement = document.createElement("li");
         liElement.classList.add("SearchBuddy-result-li")
@@ -13,8 +13,8 @@ export default (results, options) => {
         if (index === 0) {
             aElement.classList.add('selected');
         }
-        aElement.href = results[index].path;
-        if (options.withIcons) {
+        aElement.setAttribute("href",  results[index].path);
+        if (options?.withIcons) {
             const spanIconElement = document.createElement("span");
             spanIconElement.classList.add("SearchBuddy-result-span");
             spanIconElement.classList.add("SearchBuddy-icon");
