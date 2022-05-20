@@ -3,7 +3,7 @@
 </h1>  
 
 <p align="center">
- <img width="560" src="https://github.com/michaldoda/search-buddy/blob/main/docs/search-buddy-logo.png?raw=true" alt="search-buddy js plugin">
+ <img width="560" src="https://github.com/michaldoda/search-buddy/blob/main/docs/images/search-buddy-logo.png?raw=true" alt="search-buddy js plugin">
 </p>
 
 <p>
@@ -30,7 +30,7 @@ It is especially useful in projects that are stuck in complex navigation structu
 
 
 <p align="center">
-  <img width="460" src="https://github.com/michaldoda/search-buddy/blob/main/docs/search-buddy.png?raw=true" alt="search-buddy js plugin">
+  <img width="460" src="https://github.com/michaldoda/search-buddy/blob/main/docs/images/search-buddy.png?raw=true" alt="search-buddy js plugin">
 </p>
 
 
