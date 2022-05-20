@@ -2,7 +2,7 @@
     display: none;
     position: fixed;
     background-color: rgba(155, 155, 155, 0.85);
-    background-image: linear-gradient(140deg, rgba(194, 55, 145, .84), rgb(105, 67, 215, .84));
+    background-image: linear-gradient(140deg, rgba(194, 59, 146, 0.84), rgb(105, 67, 215, .84));
     width: 100%;
     height: 100%;
     left: 0;
