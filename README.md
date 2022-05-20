@@ -7,7 +7,7 @@
 </p>
 
 <p>
-    <a target="_blank" rel="noopener noreferrer" href="https://github.com/michaldoda/react-supervisor/actions/workflows/release.yml/badge.svg"><img src="https://github.com/michaldoda/react-supervisor/actions/workflows/release.yml/badge.svg" alt="release workflow result" style="max-width:100%;"></a>
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/michaldoda/search-buddy/actions/workflows/build-n-test.yml/badge.svg"><img src="https://github.com/michaldoda/react-supervisor/actions/workflows/release.yml/badge.svg" alt="release workflow result" style="max-width:100%;"></a>
     <a target="_blank" href="https://www.npmjs.com/package/react-supervisor"><img src="https://flat.badgen.net/npm/dt/react-supervisor" alt="react-supervisor total downloads" /></a>
     <a target="_blank" href="https://www.npmjs.com/package/react-supervisor"><img src="https://flat.badgen.net/npm/v/react-supervisor" alt="react-supervisor version" /></a>
     <a target="_blank" href="https://www.npmjs.com/package/react-supervisor"><img src="https://flat.badgen.net/npm/license/react-supervisor" alt="react-supervisor license" /></a>
