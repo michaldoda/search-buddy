@@ -12,44 +12,72 @@
             font-family: system-ui;
         }
         body {
-            background-color: #001;
+            background-color: #001 !important;
             margin: 0;
             padding: 0;
         }
     </style>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <style>
         #activate:hover {
             background-color: #733cb0;
         }
         #activate {
             background-color: #9c55eb;
-            font-weight: 600;
-            font-size: 1rem;
             border: none;
             color: white;
-            padding: 14px 30px;
             cursor:pointer;
+        }
+
+        .logo-text {
+            color: #fff;
+            font-size: 3.2rem;
+            font-weight: 600;
+            display: block;
+        }
+        @media screen and (max-width: 650px) {
+            .logo-text {
+                font-size: 1.8rem !important;
+                font-weight: 600;
+            }
+            .btn-divider {
+                display: block;
+                margin: 20px 0;
+            }
+
+            .btn-action {
+                line-height: 1.5;
+                padding: 0.375rem 0.75rem;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body class="">
 <div class="container">
-    <div class="col-12" style="text-align: center; margin-top: 20%;">
-        <h1 style="color: #fff; font-size: 3.5rem;" role="presentation">🍭 search-buddy</h1>
-        <button id="activate">
-            Click to open
-        </button>
-        <span style="color: #fff; padding: 0 20px">or</span>
-        <button style="font-weight: 600; font-size: 1rem; border: none; color: white; padding: 15px 32px;" disabled>
-            double click Shift
-        </button>
+    <div class="row mt-5 pt-5">
+        <div class="col-12 text-center">
+            <span class="logo-text font-monospace" role="presentation">🍭 search-buddy</span>
+        </div>
+        <div class="col-12 text-center mt-5 mt-md-3">
+            <button id="activate" class="btn btn-lg text-light fw-bold btn-action btn-outline-light rounded-pill">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 20 20">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+                Click to search
+            </button>
+            <span class="btn-divider" style="color: #fff; padding: 0 20px">- or -</span>
+            <button class="btn btn-lg fw-bold btn-dark rounded-pill btn-action" disabled style="cursor: not-allowed; background-color: #484854">
+                press Shift twice
+            </button>
+        </div>
     </div>
-    <!-- Place this tag where you want the button to render. -->
-    <div class="col-12" style="text-align: center; margin-top: 40px;">
-        <!-- Place this tag where you want the button to render. -->
-        <a class="github-button" href="https://github.com/michaldoda/search-buddy" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-show-count="true" aria-label="Star michaldoda/search-buddy on GitHub">Star</a>
+    <div class="row">
+        <div class="col-12" style="text-align: center; margin-top: 40px;">
+            <a class="github-button" href="https://github.com/michaldoda/search-buddy" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-star" data-size="large" aria-label="Star michaldoda/search-buddy on GitHub">GitHub repository</a>
+        </div>
     </div>
+
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 </div>
