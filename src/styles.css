@@ -2,7 +2,7 @@
     display: none;
     position: fixed;
     background-color: rgba(155, 155, 155, 0.85);
-    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(195, 195, 194, 0.5) 100%),radial-gradient(ellipse at top left, rgb(174 206 255 / 50%), transparent 50%),radial-gradient(ellipse at top right, rgb(255 247 214 / 50%), #a048ab00 90%),radial-gradient(ellipse at center right, rgb(255 255 255 / 90%), transparent 93%),radial-gradient(ellipse at center left, rgb(255 202 227 / 70%), transparent 99%);
+    background-image: linear-gradient(140deg, rgba(194, 55, 145, .84), rgb(105, 67, 215, .84));
     width: 100%;
     height: 100%;
     left: 0;
