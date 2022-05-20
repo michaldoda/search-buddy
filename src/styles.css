@@ -66,6 +66,7 @@
 .SearchBuddy-form {
     display: flex;
     height: 44px;
+    margin-bottom: 0;
 }
 
 .SearchBuddy-form-wrapper-fields-wrapper {
