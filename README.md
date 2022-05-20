@@ -69,7 +69,7 @@ You also need to load styles
 This script **contains all** javascript and css styles, there is no need to load any additional file.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/search-buddy@1.0.0/dist/standalone.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/search-buddy@1.2.0/dist/standalone.min.js"></script>
 <script>
   let searchBuddy = SearchBuddy({
     items: [
