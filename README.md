@@ -7,10 +7,10 @@
 </p>
 
 <p>
-    <a target="_blank" rel="noopener noreferrer" href="https://github.com/michaldoda/search-buddy/actions/workflows/build-n-test.yml/badge.svg"><img src="https://github.com/michaldoda/react-supervisor/actions/workflows/release.yml/badge.svg" alt="release workflow result" style="max-width:100%;"></a>
-    <a target="_blank" href="https://www.npmjs.com/package/react-supervisor"><img src="https://flat.badgen.net/npm/dt/react-supervisor" alt="react-supervisor total downloads" /></a>
-    <a target="_blank" href="https://www.npmjs.com/package/react-supervisor"><img src="https://flat.badgen.net/npm/v/react-supervisor" alt="react-supervisor version" /></a>
-    <a target="_blank" href="https://www.npmjs.com/package/react-supervisor"><img src="https://flat.badgen.net/npm/license/react-supervisor" alt="react-supervisor license" /></a>
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/michaldoda/search-buddy/actions/workflows/build-n-test.yml/badge.svg"><img src="https://github.com/michaldoda/search-buddy/actions/workflows/build-n-test.yml/badge.svg" alt="release workflow result" style="max-width:100%;"></a>
+    <a target="_blank" href="https://www.npmjs.com/package/search-buddy"><img src="https://flat.badgen.net/npm/dt/search-buddy" alt="search-buddy total downloads" /></a>
+    <a target="_blank" href="https://www.npmjs.com/package/search-buddy"><img src="https://flat.badgen.net/npm/v/search-buddy" alt="search-buddy version" /></a>
+    <a target="_blank" href="https://www.npmjs.com/package/search-buddy"><img src="https://flat.badgen.net/npm/license/search-buddy" alt="search-buddy license" /></a>
 </p>
 
 **search-buddy** is an open‑source ultra lightweight javascript plugin (* **<1kb**). It can help you create instant search and/or facilitate navigation between pages. It was written in pure JS without any dependencies, those make it ultra lightweight. * *~0.2kb after gzip*.
@@ -70,7 +70,7 @@ You also need to load styles
 This script **contains all** javascript and css styles, there is no need to load any additional file.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/react-supervisor@2.0.0/dist/esm/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/search-buddy@1.0.0/dist/standalone.min.js"></script>
 <script>
   let searchBuddy = SearchBuddy({
     mode: "local",
