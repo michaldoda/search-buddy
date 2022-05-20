@@ -36,8 +36,7 @@ const SearchBuddy = (options) => {
 
     const show = () => {
         state.isOpen = true;
-        document.body.style.overflow = "hidden";
-        document.body.style.height = "100%";
+        document.body.classList.add("SearchBuddy-container-open");
         container.style.display = "inline-block";
         container.querySelector('.SearchBuddy-form-wrapper-fields-wrapper-input').focus();
     };
@@ -45,8 +44,7 @@ const SearchBuddy = (options) => {
     const hide = () => {
         state.isOpen = false;
         container.style.display = "none";
-        document.body.style.overflow = "auto";
-        document.body.style.height = "100%";
+        document.body.classList.remove("SearchBuddy-container-open");
         inputElement.value = "";
         hideResults();
     };

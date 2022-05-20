@@ -8,7 +8,6 @@
 
 <p>
     <a target="_blank" rel="noopener noreferrer" href="https://github.com/michaldoda/search-buddy/actions/workflows/build-n-test.yml/badge.svg"><img src="https://github.com/michaldoda/search-buddy/actions/workflows/build-n-test.yml/badge.svg" alt="release workflow result" style="max-width:100%;"></a>
-    <a target="_blank" href="https://www.npmjs.com/package/search-buddy"><img src="https://flat.badgen.net/npm/dt/search-buddy" alt="search-buddy total downloads" /></a>
     <a target="_blank" href="https://www.npmjs.com/package/search-buddy"><img src="https://flat.badgen.net/npm/v/search-buddy" alt="search-buddy version" /></a>
     <a target="_blank" href="https://www.npmjs.com/package/search-buddy"><img src="https://flat.badgen.net/npm/license/search-buddy" alt="search-buddy license" /></a>
 </p>
@@ -69,7 +68,7 @@ You also need to load styles
 This script **contains all** javascript and css styles, there is no need to load any additional file.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/search-buddy@1.2.0/dist/standalone.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/search-buddy@1.3.0/dist/standalone.min.js"></script>
 <script>
   let searchBuddy = SearchBuddy({
     items: [

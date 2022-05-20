@@ -11,6 +11,11 @@
     font-family: system-ui;
 }
 
+.SearchBuddy-container-open {
+    overflow: hidden;
+    height: 100%;
+}
+
 .SearchBuddy-wrapper {
     position: relative;
     width: 60%;

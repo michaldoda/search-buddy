@@ -14,10 +14,13 @@ test("Base tests", () => {
         items: [],
     });
 
+    let initialBodyClassName = document.body.className;
     expect(document.querySelector(`.${container.className}`)).toBe(container);
     expect(container.style.display).toBe("");
     show();
+    expect(document.body.className).toBe("SearchBuddy-container-open");
     expect(container.style.display).toBe("inline-block");
     hide();
+    expect(document.body.className).toBe("");
     expect(container.style.display).toBe("none");
 });
