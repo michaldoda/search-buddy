@@ -20,8 +20,7 @@
     position: relative;
     width: 60%;
     max-width: 800px;
-    height: auto;
-    max-height: 85%;
+    height: 600px;
     margin: 0 auto;
     top: 10%;
     box-sizing: border-box;
