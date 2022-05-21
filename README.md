@@ -8,7 +8,8 @@
 
 <p>
     <a target="_blank" rel="noopener noreferrer" href="https://github.com/michaldoda/search-buddy/actions/workflows/build-n-test.yml/badge.svg"><img src="https://github.com/michaldoda/search-buddy/actions/workflows/build-n-test.yml/badge.svg" alt="release workflow result" style="max-width:100%;"></a>
-    <a target="_blank" href="https://www.npmjs.com/package/search-buddy"><img src="https://flat.badgen.net/npm/v/search-buddy" alt="search-buddy version" /></a>
+ <a target="_blank" href="https://www.npmjs.com/package/search-buddy"><img src="https://flat.badgen.net/npm/dt/search-buddy" alt="search-buddy total downloads" /></a>   
+<a target="_blank" href="https://www.npmjs.com/package/search-buddy"><img src="https://flat.badgen.net/npm/v/search-buddy" alt="search-buddy version" /></a>
     <a target="_blank" href="https://www.npmjs.com/package/search-buddy"><img src="https://flat.badgen.net/npm/license/search-buddy" alt="search-buddy license" /></a>
 </p>
 
