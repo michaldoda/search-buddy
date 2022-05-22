@@ -97,7 +97,7 @@ SearchBuddy({
 
 ```
 
-#### example
+#### async example
 ```js
 SearchBuddy({
     mode: 'async',
