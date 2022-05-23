@@ -265,6 +265,20 @@ const SearchBuddy = (options) => {
         form.querySelector("input").focus();
     };
 
+    const destroy = () => {
+        document.removeEventListener('mousedown', handleMouseDown);
+        document.removeEventListener('keydown', handleKeyShortcuts);
+        document.removeEventListener('keyup', handleKeyShortcutsClean);
+        resultElement.removeEventListener('mousemove', handleMouseOver);
+        closeButtonElement.removeEventListener('mousedown', handleCloseClick);
+        inputElement.removeEventListener('keyup', handleInputChange);
+        inputElement.removeEventListener('keydown', handleNavigation);
+        inputElement.removeEventListener('keydown', handleEscape);
+        form.removeEventListener('submit', handleFormSubmit);
+        form.removeEventListener('reset', handleFormReset);
+        container.remove();
+    };
+
     const handleFormReset = () => {
         hideResults();
         inputElement.focus();
@@ -288,6 +302,7 @@ const SearchBuddy = (options) => {
         container,
         show,
         hide,
+        destroy,
     };
 }
 
