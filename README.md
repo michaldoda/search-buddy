@@ -26,7 +26,7 @@ It is especially useful in projects that are stuck in complex navigation structu
   - `local` - uses static data passed within config
   - `async` - resolves any async function you pass
 - responsive design
-- and more, please check Live demo!
+- and more, please check <a href="https://michaldoda.github.io/search-buddy/" target="_blank">Live demo</a>!
 
 
 <p align="center">
