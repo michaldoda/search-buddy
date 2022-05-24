@@ -1,6 +1,6 @@
 {
   "name": "search-buddy",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Your search-buddy who will get you to the right URL. Ultra small (< 1kb after gzip), flexible and no dependency required. It offers a built-in filtering algorithm for client side processing.",
   "keywords": [
     "search",
