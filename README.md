@@ -59,9 +59,13 @@ document.querySelector("#search-btn").addEventListener("click", searchBuddy.show
 
 ```
 
-You also need to load styles
+You also need to load styles, you can import styles in scss
 ```scss
 @import 'search-buddy';
+```
+or via javascript
+```js
+import 'search-buddy/dist/esm/index.css'
 ```
 
 
