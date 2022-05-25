@@ -8,6 +8,7 @@ const SearchBuddy = (options) => {
         keyShortcut: null,
         placeholder: "Start typing...",
         withIcons: true,
+        threshold: 1000,
         maxResults: 25,
         stateSave: false,
         items: [],
@@ -18,7 +19,6 @@ const SearchBuddy = (options) => {
     let state = {
         keyDownLog: [],
         isOpen: false,
-        threshold: 1000,
         query: "",
         results: [],
         cachedItems: null,
@@ -233,7 +233,7 @@ const SearchBuddy = (options) => {
                     });
 
                     if (state.keyDownLog.length > 1) {
-                        if (state.keyDownLog[state.keyDownLog.length-1].time - state.keyDownLog[state.keyDownLog.length-2].time < state.threshold) {
+                        if (state.keyDownLog[state.keyDownLog.length-1].time - state.keyDownLog[state.keyDownLog.length-2].time < options.threshold) {
                             show();
                             state.keyDownLog = [];
                         } else {
