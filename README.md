@@ -85,14 +85,13 @@ This script **contains all** javascript and css styles, there is no need to load
 ```
 
 ## Configuration
-### Options
+### Options with default values
 ```js
 SearchBuddy({
   /**
    * The URL the user will be redirected to if there are no results
    * and the user clicks Enter. The search value will be appended to this URL.
    * 
-   * @default: null
    * @example: "/search?query="
    */
   fallbackSearchUrl: null,
@@ -103,7 +102,6 @@ SearchBuddy({
    * 
    * @example [ {title: "Page", path: "/page", } ]
    * @example async () => {}
-   * @default []
    */
   items: [],
   /**
@@ -118,46 +116,32 @@ SearchBuddy({
    * @example "doubleShiftLeft"
    * @example "doubleEscape"
    * @example "Ctrl+/"
-   *
-   * @default null
    */
   keyShortcut: null,
   /**
    * The maximum number of items rendered in search box.
-   *
-   * @default: 25
    */
   maxResults: 25,
   /**
    * Determines the use of async or sync to load items.
-   * 
-   * @default "local"
    */
   mode: "local",
   /**
    * The placeholder for search input.
-   *
-   * @default "Start typing..."
    */
   placeholder: "Start typing...",
   /**
    * Flag to enable saving results to sessionStorage.
    * It is especially useful when loading items via API.
-   *
-   * @default: false
    */
   stateSave: false,
   /**
    * The time threshold (ms) for double clicks.
    * It is used only if keyShortcut is passed.
-   *
-   * @default: 1000
    */
   threshold: 1000,
   /**
    * Show/hide emojis.
-   *
-   * @default: true
    */
   withIcons: true,
 })
