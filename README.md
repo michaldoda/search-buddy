@@ -84,6 +84,114 @@ This script **contains all** javascript and css styles, there is no need to load
 </script>
 ```
 
+## Configuration
+### Options
+```js
+SearchBuddy({
+  /**
+   * The URL the user will be redirected to if there are no results
+   * and the user clicks Enter. The search value will be appended to this URL.
+   * 
+   * @default: null
+   * @example: "/search?query="
+   */
+  fallbackSearchUrl: null,
+
+  /**
+   * It can be an array or an async function. 
+   * If an async function is used, you must also set the mode to 'async'
+   * 
+   * @example [ {title: "Page", path: "/page", } ]
+   * @example async () => {}
+   * @default []
+   */
+  items: [],
+  /**
+   * Key shortcut used to activate search-buddy.
+   * There is a naming convention. If you want to listen for a double click,
+   * then use "double[keyCode]" where [keyCode] is the code of the key.
+   * In case you want to use two key press event,
+   * use the key code separated by a plus sign.
+   *
+   * Key codes: https://w3c.github.io/uievents/#dom-keyboardevent-code
+   *
+   * @example "doubleShiftLeft"
+   * @example "doubleEscape"
+   * @example "Ctrl+/"
+   *
+   * @default null
+   */
+  keyShortcut: null,
+  /**
+   * The maximum number of items rendered in search box.
+   *
+   * @default: 25
+   */
+  maxResults: 25,
+  /**
+   * Determines the use of async or sync to load items.
+   * 
+   * @default "local"
+   */
+  mode: "local",
+  /**
+   * The placeholder for search input.
+   *
+   * @default "Start typing..."
+   */
+  placeholder: "Start typing...",
+  /**
+   * Flag to enable saving results to sessionStorage.
+   * It is especially useful when loading items via API.
+   *
+   * @default: false
+   */
+  stateSave: false,
+  /**
+   * The time threshold (ms) for double clicks.
+   * It is used only if keyShortcut is passed.
+   *
+   * @default: 1000
+   */
+  threshold: 1000,
+  /**
+   * Show/hide emojis.
+   *
+   * @default: true
+   */
+  withIcons: true,
+})
+```
+
+### Instance
+Whenever you run `SearchBuddy(options)` the new instance will be created. The instance contains some public attributes and methods. You should avoid creating multiple instances, the idea is to have one instance per entire app.
+
+Usually there is no need to manually interact with the instance, but if you want to use it anyway then here you have a little docs:
+```js
+// Let's create an instance
+const searchBuddy = SearchBuddy(options);
+
+/**
+ * Reference to DOM element
+ */
+searchBuddy.container
+
+/**
+ * Manually opens a container
+ */
+searchBuddy.show()
+
+/**
+ * Manually hides a container
+ */
+searchBuddy.hide()
+
+/**
+ * Manually destroys DOM elements and removes all event listeners 
+ */
+searchBuddy.destroy()
+```
+
 ## Digging Deeper
 
 ### fetch `items` with async
