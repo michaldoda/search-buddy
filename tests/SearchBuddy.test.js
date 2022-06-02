@@ -10,7 +10,6 @@ test("Base tests", () => {
         show,
         hide,
     } = SearchBuddy({
-        mode: "local",
         items: [],
     });
 

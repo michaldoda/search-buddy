@@ -12,7 +12,6 @@ const SearchBuddy = (options) => {
         maxResults: 25,
         stateSave: false,
         items: [],
-        mode: 'local',
         ...options,
     }
 
@@ -133,19 +132,21 @@ const SearchBuddy = (options) => {
                 resolve(state.cachedItems);
             });
         }
-        if (options.mode === "local") {
+        if (Array.isArray(options.items)) {
             return new Promise((resolve) => {
                 if (options.stateSave) sessionStorage.setItem('SearchBuddyItems', JSON.stringify(options.items));
                 state.cachedItems = options.items;
                 resolve(options.items);
             });
-        } else if (options.mode === "async") {
+        } else if (typeof options.items === "function" && options.items.constructor.name === "AsyncFunction") {
             return options.items().then((res) => {
                 if (options.stateSave) sessionStorage.setItem('SearchBuddyItems', JSON.stringify(res));
                 state.cachedItems = res;
                 return res;
             });
         }
+
+        throw "Unsupported items type. Please use one of the following types: Array, AsyncFunction";
     };
     const handleInputChange = (e) => {
         let arrowDownClicked = false;

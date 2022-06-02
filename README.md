@@ -22,9 +22,7 @@ It is especially useful in projects that are stuck in complex navigation structu
 - arrow navigation
 - cache mechanism (sessionStorage)
 - built-in search algorithm, you just pass the items to be searched
-- two modes: `local` and `async`
-  - `local` - uses static data passed within config
-  - `async` - resolves any async function you pass
+- dynamic mode - you can pass an array of items or an async function where you can call your API to fetch items.
 - responsive design
 - and more, please check <a href="https://michaldoda.github.io/search-buddy/" target="_blank">Live demo</a>!
 
@@ -63,7 +61,7 @@ You also need to load styles, you can import styles in scss
 ```scss
 @import 'search-buddy';
 ```
-or via javascript
+or via javascript (you may need a css loader)
 ```js
 import 'search-buddy/dist/esm/index.css'
 ```
@@ -98,10 +96,14 @@ SearchBuddy({
 
   /**
    * It can be an array or an async function. 
-   * If an async function is used, you must also set the mode to 'async'
    * 
    * @example [ {title: "Page", path: "/page", } ]
-   * @example async () => {}
+   * or
+   * @example async () => {
+            return new Promise((resolve, reject) => {
+                // call your API
+            })
+        }
    */
   items: [],
   /**
@@ -122,10 +124,6 @@ SearchBuddy({
    * The maximum number of items rendered in search box.
    */
   maxResults: 25,
-  /**
-   * Determines the use of async or sync to load items.
-   */
-  mode: "local",
   /**
    * The placeholder for search input.
    */
@@ -180,12 +178,11 @@ searchBuddy.destroy()
 
 ### fetch `items` with async
 
-As you know, it may happen that you have much more URLs, then the recommended solution is to use async mode with session cache.
+As you know, it may happen that you have much more URLs, then the recommended solution is to pass an async function for items parameter and enable the session storage cache.
 
-Instead of passing array you can simple pass an async function, this function will be resolved by `search-buddy`. This function MUST return just an array of items.
+Instead of passing array you can simply pass an async function, this function will be resolved by `search-buddy`. This function MUST return just an array of items.
 ```js
 SearchBuddy({
-    mode: 'async',
     items: async () => { /* ... */ },
     stateSave: true, // <-- enable cache with sessionStorage
     keyShortcut: "doubleShiftLeft",
@@ -196,7 +193,6 @@ SearchBuddy({
 #### async example
 ```js
 SearchBuddy({
-    mode: 'async',
     keyShortcut: "doubleShiftLeft",
     stateSave: true,
     items: async () => {
