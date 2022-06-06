@@ -138,7 +138,7 @@ const SearchBuddy = (options) => {
                 state.cachedItems = options.items;
                 resolve(options.items);
             });
-        } else if (typeof options.items === "function" && options.items.constructor.name === "AsyncFunction") {
+        } else if (typeof options.items === "function") {
             return options.items().then((res) => {
                 if (options.stateSave) sessionStorage.setItem('SearchBuddyItems', JSON.stringify(res));
                 state.cachedItems = res;
