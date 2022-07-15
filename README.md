@@ -18,7 +18,7 @@
 It is especially useful in projects that are stuck in complex navigation structures (e.g. admin panel). It will surely make your users' everyday things more enjoyable.
 
 ## Features
-- key shortcut (e.g. `doubleShiftLeft`, `Ctrl+/`, `doubleEscape` and so on)
+- key shortcut (e.g. `doubleShiftLeft`, `ControlLeft+Slash`, `doubleEscape` and so on)
 - arrow navigation
 - cache mechanism (sessionStorage)
 - built-in search algorithm, you just pass the items to be searched
@@ -117,7 +117,7 @@ SearchBuddy({
    *
    * @example "doubleShiftLeft"
    * @example "doubleEscape"
-   * @example "Ctrl+/"
+   * @example "ControlLeft+Slash"
    */
   keyShortcut: null,
   /**
