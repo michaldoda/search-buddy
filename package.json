@@ -1,6 +1,6 @@
 {
   "name": "search-buddy",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "Your search-buddy who will get you to the right URL. Ultra small and flexible and no dependency required. It offers a built-in filtering algorithm for client side processing.",
   "keywords": [
     "search",
@@ -12,7 +12,7 @@
     "test": "jest",
     "dev:watch": "webpack serve -c webpack.development.config.js",
     "dev": "webpack --config webpack.development.config.js",
-    "production": "webpack --config webpack.production-standalone.config.js && rollup src/index.js -c"
+    "production": "webpack --config webpack.production-standalone.config.js && rollup src/index.js -c --bundleConfigAsCjs"
   },
   "repository": {
     "type": "git",
